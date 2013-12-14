@@ -1,0 +1,6 @@
+src/launcher_pi.h
+src/launcher_pi.cpp
+src/LauncherUIDialog.h
+src/LauncherUIDialog.cpp
+src/LauncherSettingsDialog.h
+src/LauncherSettingsDialog.cpp

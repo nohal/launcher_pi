@@ -86,7 +86,7 @@ void LauncherUIDialog::OnBtnClick( wxCommandEvent& event )
     cmd.Replace( _T( "%BOAT_VAR%" ), wxString::Format( _T( "%f" ), m_Var ) );
     cmd.Replace( _T( "%BOAT_FIXTIME%" ), wxString::Format( _T( "%d" ), m_FixTime ) );
     cmd.Replace( _T( "%BOAT_NSATS%" ), wxString::Format( _T( "%d" ), m_nSats ) );
-    wxExecute( cmd, wxEXEC_SYNC );
+    wxExecute( cmd, wxEXEC_ASYNC );
     event.Skip();
 }
 

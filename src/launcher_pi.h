@@ -77,7 +77,7 @@ public:
     int GetToolbarToolCount ( void );
     void ShowPreferencesDialog ( wxWindow* parent );
     void OnToolbarToolCallback ( int id );
-    void SetPositionFixEx(PlugIn_Position_Fix &pfix);
+    void SetPositionFix(PlugIn_Position_Fix &pfix);
 
 // Other public methods
     void SetColorScheme ( PI_ColorScheme cs );

@@ -325,7 +325,7 @@ void launcher_pi::SetColorScheme ( PI_ColorScheme cs )
     DimeWindow ( m_pLauncherDialog );
 }
 
-void launcher_pi::SetPositionFixEx( PlugIn_Position_Fix &pfix )
+void launcher_pi::SetPositionFix( PlugIn_Position_Fix &pfix )
 {
     m_pLauncherDialog->SetPositionFix( pfix.Lat, pfix.Lon, pfix.Cog, pfix.Sog, pfix.Var, pfix.FixTime, pfix.nSats );
 }

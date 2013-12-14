@@ -19,8 +19,8 @@ The variables implemented so far include:
 ###Examples
 Open bing satellite imagery at the boat location:
 
-**http://www.bing.com/maps/?v=2&cp=%BOAT_LAT%~%BOAT_LON%&lvl=16&dir=0&sty=h&form=LMLTCC**
+**firefox http://www.bing.com/maps/?v=2&cp=%BOAT_LAT%~%BOAT_LON%&lvl=16&dir=0&sty=h&form=LMLTCC**
 
 Turn of a Linux computer (You must add something like "username    ALL=(ALL) NOPASSWD: /sbin/shutdown" into /etc/sudoers to be able to perform the shutdown without needing a password):
 
-**sudo shutdown -h now**
+**sudo shutdown -h now &**

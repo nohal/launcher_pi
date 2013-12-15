@@ -8,36 +8,41 @@ You can use several variables in your commands which will be replaced wit the ac
 
 The variables implemented so far include:
 
-- %BOAT_LAT% - Boat Latitude
-- %BOAT_LON% - Boat longitude
-- %BOAT_SOG% - Boat SOG
-- %BOAT_COG% - Boat COG
-- %BOAT_VAR% - Magnetic variation
-- %BOAT_FIXTIME% - The timestamp of the past fix (seconds since 01/01/1970 UTC)
-- %BOAT_NSATS - Number of satelites "visible" during the last fix
+| Variable | Meaning |
+| -------- | ------- |
+| %BOAT_LAT% | Boat Latitude |
+| %BOAT_LON% | Boat longitude |
+| %BOAT_SOG% | Boat SOG |
+| %BOAT_COG% | Boat COG |
+| %BOAT_VAR% | Magnetic variation |
+| %BOAT_FIXTIME% | The timestamp of the past fix (seconds since 01/01/1970 UTC) |
+| %BOAT_NSATS | Number of satelites "visible" during the last fix |
 
 ###Examples
 Open bing satellite imagery at the boat location:
 
-**firefox http://www.bing.com/maps/?v=2&cp=%BOAT_LAT%~%BOAT_LON%&lvl=16&dir=0&sty=h&form=LMLTCC**
+```firefox http://www.bing.com/maps/?v=2&cp=%BOAT_LAT%~%BOAT_LON%&lvl=16&dir=0&sty=h&form=LMLTCC```
 
 Turn of a Linux computer (You must add something like "username    ALL=(ALL) NOPASSWD: /sbin/shutdown" into /etc/sudoers to be able to perform the shutdown without needing a password):
 
-**sudo shutdown -h now &**
+```sudo shutdown -h now &```
 
 ##Building
 This assumes you have already seen the building instructions at http://opencpn.org/ocpn/compiling_source_linux or http://opencpn.org/ocpn/compiling_source_windows and can build OpenCPN from source.
 
 Linux:
+```
 cd YOUROPENCPNSOURCETREE/plugins
 git clone git clone https://github.com/nohal/launcher_pi.git
 cd ../build
 cmake ..
 make
-
+```
 Windows:
+```
 cd C:\YOUROPENCPNSOURCETREE\plugins
 git clone git clone https://github.com/nohal/launcher_pi.git
 cd ..\build
 cmake ..
 cmake --build . --config release
+```

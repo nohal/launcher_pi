@@ -35,7 +35,8 @@
 // wxJoin and wxSplit
 // ===========================================================================
 
-#if not wxCHECK_VERSION(2, 9, 0)
+#if wxCHECK_VERSION(2, 9, 0)
+#else
 #include "wx/tokenzr.h"
 
 wxString wxJoin( const wxArrayString& arr, const wxChar sep, const wxChar escape )
@@ -296,8 +297,11 @@ bool launcher_pi::LoadConfig ( void )
     m_launcher_labels = pConf->Read ( _T ( "Labels" ), wxEmptyString );
     m_launcher_commands = pConf->Read ( _T ( "Commands" ), wxEmptyString );
 
-    m_alauncher_labels = wxSplit( m_launcher_labels, ';', '\\' );
-    m_alauncher_commands = wxSplit( m_launcher_commands, ';', '\\' );
+    if ( m_launcher_labels != wxEmptyString )
+    {
+        m_alauncher_labels = wxSplit( m_launcher_labels, ';', '\\' );
+        m_alauncher_commands = wxSplit( m_launcher_commands, ';', '\\' );
+    }
 
     return true;
 }

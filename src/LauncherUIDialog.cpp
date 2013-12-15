@@ -58,6 +58,9 @@ void LauncherUIDialog::CreateButtons( const wxArrayString& labels, const wxArray
     {
         AddButton( labels[i], commands[i] );
     }
+    this->m_scrolledWindow->Layout();
+    this->button_sizer->Fit( m_scrolledWindow );
+    this->Layout();
 }
 
 void LauncherUIDialog::AddButton( const wxString& label, const wxString& command )

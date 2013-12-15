@@ -24,3 +24,20 @@ Open bing satellite imagery at the boat location:
 Turn of a Linux computer (You must add something like "username    ALL=(ALL) NOPASSWD: /sbin/shutdown" into /etc/sudoers to be able to perform the shutdown without needing a password):
 
 **sudo shutdown -h now &**
+
+##Building
+This assumes you have already seen the building instructions at http://opencpn.org/ocpn/compiling_source_linux or http://opencpn.org/ocpn/compiling_source_windows and can build OpenCPN from source.
+
+Linux:
+cd YOUROPENCPNSOURCETREE/plugins
+git clone git clone https://github.com/nohal/launcher_pi.git
+cd ../build
+cmake ..
+make
+
+Windows:
+cd C:\YOUROPENCPNSOURCETREE\plugins
+git clone git clone https://github.com/nohal/launcher_pi.git
+cd ..\build
+cmake ..
+cmake --build . --config release

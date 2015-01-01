@@ -16,7 +16,7 @@ The variables implemented so far include:
 | %BOAT_COG% | Boat COG |
 | %BOAT_VAR% | Magnetic variation |
 | %BOAT_FIXTIME% | The timestamp of the past fix (seconds since 01/01/1970 UTC) |
-| %BOAT_NSATS | Number of satelites "visible" during the last fix |
+| %BOAT_NSATS% | Number of satelites "visible" during the last fix |
 
 ###Examples
 Open bing satellite imagery at the boat location:

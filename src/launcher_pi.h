@@ -36,13 +36,12 @@
 #include <wx/arrstr.h> 
 #include <wx/fileconf.h>
 
-#define     PLUGIN_VERSION_MAJOR    0
-#define     PLUGIN_VERSION_MINOR    2
+#include "version.h"
 
 #define     MY_API_VERSION_MAJOR    1
 #define     MY_API_VERSION_MINOR    7
 
-#include "../../../include/ocpn_plugin.h"
+#include "ocpn_plugin.h"
 
 #include "LauncherSettingsDialog.h"
 #include "LauncherUIDialog.h"

@@ -1,0 +1,66 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: opencpn\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-12-14 17:39-0600\n"
+"PO-Revision-Date: 2014-12-13 12:37-0500\n"
+"Last-Translator: nohal <pavel@kalian.cz>\n"
+"Language-Team: Czech\n"
+"Language: cs_CZ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: opencpn\n"
+"X-Crowdin-File: /plugins/launcher_pi/po/launcher_pi.pot\n"
+
+#: src/launcher_pi.cpp:180 src/LauncherUIDialog.h:70
+msgid "Launcher"
+msgstr "Spouštěč"
+
+#: src/launcher_pi.cpp:247
+msgid "Launcher PlugIn for OpenCPN"
+msgstr "Doplněk Spouštěč pro OpenCPN"
+
+#: src/launcher_pi.cpp:253
+msgid "Launcher PlugIn for OpenCPN\nProvides a simple configurable dialog to launch external programs."
+msgstr "Doplněk Spouštěč pro OpenCPN\nPoskytuje jednoduchý konfigurovatelný dialog pro spouštění externích programů."
+
+#: src/LauncherSettingsDialog.h:76
+msgid "Launcher Settings"
+msgstr "Nastavení Spouštěče"
+
+#: src/LauncherSettingsDialog.h:104
+msgid "Launcher Item"
+msgstr "Položka spouštěče"
+
+#: src/LauncherSettingsDialog.cpp:50 src/LauncherSettingsDialog.cpp:245
+msgid "Label"
+msgstr "Popisek"
+
+#: src/LauncherSettingsDialog.cpp:51 src/LauncherSettingsDialog.cpp:252
+msgid "Command"
+msgstr "Příkaz"
+
+#: src/LauncherSettingsDialog.cpp:58
+msgid "Add"
+msgstr "Přidat"
+
+#: src/LauncherSettingsDialog.cpp:61
+msgid "Edit"
+msgstr "Upravit"
+
+#: src/LauncherSettingsDialog.cpp:64
+msgid "Remove"
+msgstr "Odstranit"
+
+#: src/LauncherSettingsDialog.cpp:173
+msgid "Do you really want to remove this launcher action?"
+msgstr "Opravdu chcete odstranit tuto akci ze Spouštěče?"
+
+#: src/LauncherSettingsDialog.cpp:173
+msgid "Really remove?"
+msgstr "Opravdu odstranit?"
+

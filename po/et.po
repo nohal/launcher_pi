@@ -1,0 +1,65 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: opencpn\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-12-14 17:39-0600\n"
+"PO-Revision-Date: 2014-12-30 08:58-0500\n"
+"Last-Translator: nohal <pavel@kalian.cz>\n"
+"Language-Team: Estonian\n"
+"Language: et_EE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: opencpn\n"
+"X-Crowdin-File: /plugins/launcher_pi/po/launcher_pi.pot\n"
+
+#: src/launcher_pi.cpp:180 src/LauncherUIDialog.h:70
+msgid "Launcher"
+msgstr "Käivitaja"
+
+#: src/launcher_pi.cpp:247
+msgid "Launcher PlugIn for OpenCPN"
+msgstr "Käivitaja plugin OpenCPNile"
+
+#: src/launcher_pi.cpp:253
+msgid "Launcher PlugIn for OpenCPN\nProvides a simple configurable dialog to launch external programs."
+msgstr "Käivitaja plugIn OpenCPNile\nLihtne seadistatav dialoog väliste programmide käivitamiseks."
+
+#: src/LauncherSettingsDialog.h:76
+msgid "Launcher Settings"
+msgstr "Käivitaja seaded"
+
+#: src/LauncherSettingsDialog.h:104
+msgid "Launcher Item"
+msgstr "Käivitaja üksus"
+
+#: src/LauncherSettingsDialog.cpp:50 src/LauncherSettingsDialog.cpp:245
+msgid "Label"
+msgstr "Silt"
+
+#: src/LauncherSettingsDialog.cpp:51 src/LauncherSettingsDialog.cpp:252
+msgid "Command"
+msgstr "Käsk"
+
+#: src/LauncherSettingsDialog.cpp:58
+msgid "Add"
+msgstr "Lisa"
+
+#: src/LauncherSettingsDialog.cpp:61
+msgid "Edit"
+msgstr "Muuda"
+
+#: src/LauncherSettingsDialog.cpp:64
+msgid "Remove"
+msgstr "Eemalda"
+
+#: src/LauncherSettingsDialog.cpp:173
+msgid "Do you really want to remove this launcher action?"
+msgstr "Kas soovite tõesti selle käivitajatoimingu eemaldada?"
+
+#: src/LauncherSettingsDialog.cpp:173
+msgid "Really remove?"
+msgstr "Kas tõesti eemaldada?"
+

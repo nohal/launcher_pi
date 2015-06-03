@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-14 17:39-0600\n"
-"PO-Revision-Date: 2015-01-06 10:37-0500\n"
+"PO-Revision-Date: 2015-05-23 05:02-0400\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
@@ -13,53 +13,56 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
 "X-Crowdin-Project: opencpn\n"
+"X-Crowdin-Language: pt-BR\n"
 "X-Crowdin-File: /plugins/launcher_pi/po/launcher_pi.pot\n"
 
 #: src/launcher_pi.cpp:180 src/LauncherUIDialog.h:70
 msgid "Launcher"
-msgstr ""
+msgstr "Launcher"
 
 #: src/launcher_pi.cpp:247
 msgid "Launcher PlugIn for OpenCPN"
-msgstr ""
+msgstr "PlugIn Launcher para OpenCPN"
 
 #: src/launcher_pi.cpp:253
-msgid "Launcher PlugIn for OpenCPN\nProvides a simple configurable dialog to launch external programs."
-msgstr ""
+msgid "Launcher PlugIn for OpenCPN\n"
+"Provides a simple configurable dialog to launch external programs."
+msgstr "PlugIn Launcher para OpenCPN\n"
+"Disponibiliza uma simples janela configurável para lançar programas externos."
 
 #: src/LauncherSettingsDialog.h:76
 msgid "Launcher Settings"
-msgstr ""
+msgstr "Configurações Launcher"
 
 #: src/LauncherSettingsDialog.h:104
 msgid "Launcher Item"
-msgstr ""
+msgstr "Items do Launcher"
 
 #: src/LauncherSettingsDialog.cpp:50 src/LauncherSettingsDialog.cpp:245
 msgid "Label"
-msgstr ""
+msgstr "Etiqueta"
 
 #: src/LauncherSettingsDialog.cpp:51 src/LauncherSettingsDialog.cpp:252
 msgid "Command"
-msgstr ""
+msgstr "Comando"
 
 #: src/LauncherSettingsDialog.cpp:58
 msgid "Add"
-msgstr ""
+msgstr "Adicionar"
 
 #: src/LauncherSettingsDialog.cpp:61
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: src/LauncherSettingsDialog.cpp:64
 msgid "Remove"
-msgstr ""
+msgstr "Remover"
 
 #: src/LauncherSettingsDialog.cpp:173
 msgid "Do you really want to remove this launcher action?"
-msgstr ""
+msgstr "Pretende realmente remover este comando do Launcher?"
 
 #: src/LauncherSettingsDialog.cpp:173
 msgid "Really remove?"
-msgstr ""
+msgstr "Remover realmente?"
 

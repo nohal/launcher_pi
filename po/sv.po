@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-14 17:39-0600\n"
-"PO-Revision-Date: 2015-01-10 13:44-0500\n"
+"PO-Revision-Date: 2015-05-29 14:06-0400\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
@@ -13,6 +13,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
 "X-Crowdin-Project: opencpn\n"
+"X-Crowdin-Language: sv-SE\n"
 "X-Crowdin-File: /plugins/launcher_pi/po/launcher_pi.pot\n"
 
 #: src/launcher_pi.cpp:180 src/LauncherUIDialog.h:70
@@ -24,8 +25,10 @@ msgid "Launcher PlugIn for OpenCPN"
 msgstr "Genvägsmodul för OpenCPN"
 
 #: src/launcher_pi.cpp:253
-msgid "Launcher PlugIn for OpenCPN\nProvides a simple configurable dialog to launch external programs."
-msgstr "Genvägsmodulen för OpenCPN\nErbjuder enkla konfigurerbara dialogrutor för att starta externa program."
+msgid "Launcher PlugIn for OpenCPN\n"
+"Provides a simple configurable dialog to launch external programs."
+msgstr "Genvägsmodulen för OpenCPN\n"
+"Erbjuder enkla konfigurerbara dialogrutor för att starta externa program."
 
 #: src/LauncherSettingsDialog.h:76
 msgid "Launcher Settings"

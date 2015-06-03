@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-14 17:39-0600\n"
-"PO-Revision-Date: 2015-01-12 13:31-0500\n"
+"PO-Revision-Date: 2015-06-02 20:34-0400\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: Vietnamese\n"
 "Language: vi_VN\n"
@@ -13,6 +13,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: crowdin.com\n"
 "X-Crowdin-Project: opencpn\n"
+"X-Crowdin-Language: vi\n"
 "X-Crowdin-File: /plugins/launcher_pi/po/launcher_pi.pot\n"
 
 #: src/launcher_pi.cpp:180 src/LauncherUIDialog.h:70
@@ -24,7 +25,8 @@ msgid "Launcher PlugIn for OpenCPN"
 msgstr ""
 
 #: src/launcher_pi.cpp:253
-msgid "Launcher PlugIn for OpenCPN\nProvides a simple configurable dialog to launch external programs."
+msgid "Launcher PlugIn for OpenCPN\n"
+"Provides a simple configurable dialog to launch external programs."
 msgstr ""
 
 #: src/LauncherSettingsDialog.h:76

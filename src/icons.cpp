@@ -27,18 +27,18 @@ void initialize_images(void)
 		_img_launcher = new wxBitmap(wxImage(sm));
 	}
     
-#ifdef IACFLEET_USE_SVG
+#ifdef LAUNCHER_USE_SVG
     wxFileName fn;
     fn.SetPath(*GetpSharedDataLocation());
     fn.AppendDir(_T("plugins"));
     fn.AppendDir(_T("launcher_pi"));
     fn.AppendDir(_T("data"));
     fn.SetFullName(_T("launcher_pi.svg"));
-    _svg_iacfleet = fn.GetFullPath();
+    _svg_launcher = fn.GetFullPath();
     fn.SetFullName(_T("launcher_pi_rollover.svg"));
-    _svg_iacfleet_rollover = fn.GetFullPath();
+    _svg_launcher_rollover = fn.GetFullPath();
     fn.SetFullName(_T("launcher_pi_toggled.svg"));
-    _svg_iacfleet_toggled = fn.GetFullPath();
+    _svg_launcher_toggled = fn.GetFullPath();
 #endif
     
 	return;

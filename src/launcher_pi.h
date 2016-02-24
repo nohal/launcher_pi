@@ -39,7 +39,7 @@
 #include "version.h"
 
 #define     MY_API_VERSION_MAJOR    1
-#define     MY_API_VERSION_MINOR    7
+#define     MY_API_VERSION_MINOR    13
 
 #include "ocpn_plugin.h"
 
@@ -52,7 +52,7 @@
 
 #define LAUNCHER_TOOL_POSITION    -1          // Request default positioning of toolbar tool
 
-class launcher_pi : public opencpn_plugin_17
+class launcher_pi : public opencpn_plugin_113
 {
 public:
     launcher_pi ( void *ppimgr );

@@ -150,7 +150,7 @@ extern "C" DECL_EXP void destroy_pi ( opencpn_plugin* p )
 //---------------------------------------------------------------------------------------------------------
 
 launcher_pi::launcher_pi ( void *ppimgr )
-    : opencpn_plugin_17 ( ppimgr )
+    : opencpn_plugin_113 ( ppimgr )
 {
     // Create the PlugIn icons
     initialize_images();
@@ -177,9 +177,13 @@ int launcher_pi::Init ( void )
     // Get a pointer to the opencpn display canvas, to use as a parent for the LAUNCHER dialog
     m_parent_window = GetOCPNCanvasWindow();
 
+#ifdef LAUNCHER_USE_SVG
+    m_leftclick_tool_id = InsertPlugInToolSVG( _T( "Launcher" ), _svg_launcher, _svg_launcher_rollover, _svg_launcher_toggled, wxITEM_CHECK, _( "Launcher" ), _T( "" ), NULL, LAUNCHER_TOOL_POSITION, 0, this);
+#else
     m_leftclick_tool_id = InsertPlugInTool ( _T ( "" ), _img_launcher, _img_launcher, wxITEM_CHECK,
                           _ ( "Launcher" ), _T ( "" ), NULL,
                           LAUNCHER_TOOL_POSITION, 0, this );
+#endif
 
     m_pLauncherDialog = new LauncherUIDialog( m_parent_window );
     m_pLauncherDialog->CreateButtons( m_alauncher_labels, m_alauncher_commands );

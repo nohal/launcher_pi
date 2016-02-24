@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-14 17:39-0600\n"
-"PO-Revision-Date: 2015-05-29 14:06-0400\n"
+"PO-Revision-Date: 2016-01-25 19:59-0500\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: Norwegian Bokmal\n"
 "Language: nb_NO\n"
@@ -18,25 +18,25 @@ msgstr ""
 
 #: src/launcher_pi.cpp:180 src/LauncherUIDialog.h:70
 msgid "Launcher"
-msgstr "Launcher"
+msgstr "App-Starter"
 
 #: src/launcher_pi.cpp:247
 msgid "Launcher PlugIn for OpenCPN"
-msgstr "Launcher utvidelsen for OpenCPN"
+msgstr "App-Starter utvidelsen for OpenCPN"
 
 #: src/launcher_pi.cpp:253
 msgid "Launcher PlugIn for OpenCPN\n"
 "Provides a simple configurable dialog to launch external programs."
-msgstr "Launcher utvidelsen for OpenCPN\n"
+msgstr "App-Starter utvidelsen for OpenCPN\n"
 "Gir deg en enkel konfigurerbar dialog for å starte eksterne programmer."
 
 #: src/LauncherSettingsDialog.h:76
 msgid "Launcher Settings"
-msgstr "Innstillinger for Launcher"
+msgstr "Innstillinger for App-Starter"
 
 #: src/LauncherSettingsDialog.h:104
 msgid "Launcher Item"
-msgstr "Launcher enhet"
+msgstr "App-Starter enhet"
 
 #: src/LauncherSettingsDialog.cpp:50 src/LauncherSettingsDialog.cpp:245
 msgid "Label"
@@ -60,7 +60,7 @@ msgstr "Fjern"
 
 #: src/LauncherSettingsDialog.cpp:173
 msgid "Do you really want to remove this launcher action?"
-msgstr "Vil du virkelig fjerne denne Launcher oppføringen?"
+msgstr "Vil du virkelig fjerne denne App-Starter oppføringen?"
 
 #: src/LauncherSettingsDialog.cpp:173
 msgid "Really remove?"

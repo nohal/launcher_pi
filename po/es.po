@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-14 17:39-0600\n"
-"PO-Revision-Date: 2015-04-21 14:53-0400\n"
+"PO-Revision-Date: 2016-02-18 16:08-0500\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
@@ -18,49 +18,51 @@ msgstr ""
 
 #: src/launcher_pi.cpp:180 src/LauncherUIDialog.h:70
 msgid "Launcher"
-msgstr ""
+msgstr "Lanzador"
 
 #: src/launcher_pi.cpp:247
 msgid "Launcher PlugIn for OpenCPN"
-msgstr ""
+msgstr "PlugIn Lanzador para OpenCPN"
 
 #: src/launcher_pi.cpp:253
-msgid "Launcher PlugIn for OpenCPN\nProvides a simple configurable dialog to launch external programs."
-msgstr ""
+msgid "Launcher PlugIn for OpenCPN\n"
+"Provides a simple configurable dialog to launch external programs."
+msgstr "PlugIn Lanzador para OpenCPN\n"
+"Proporciona un sistema que con una fácil selección configurable puede iniciar programas externos."
 
 #: src/LauncherSettingsDialog.h:76
 msgid "Launcher Settings"
-msgstr ""
+msgstr "Ajustes del Lanzador"
 
 #: src/LauncherSettingsDialog.h:104
 msgid "Launcher Item"
-msgstr ""
+msgstr "Artículo de Lanzador"
 
 #: src/LauncherSettingsDialog.cpp:50 src/LauncherSettingsDialog.cpp:245
 msgid "Label"
-msgstr ""
+msgstr "Etiqueta"
 
 #: src/LauncherSettingsDialog.cpp:51 src/LauncherSettingsDialog.cpp:252
 msgid "Command"
-msgstr ""
+msgstr "Comando"
 
 #: src/LauncherSettingsDialog.cpp:58
 msgid "Add"
-msgstr ""
+msgstr "Añadir"
 
 #: src/LauncherSettingsDialog.cpp:61
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: src/LauncherSettingsDialog.cpp:64
 msgid "Remove"
-msgstr ""
+msgstr "Eliminar"
 
 #: src/LauncherSettingsDialog.cpp:173
 msgid "Do you really want to remove this launcher action?"
-msgstr ""
+msgstr "¿Realmente desea eliminar esta acción de Lanzador?"
 
 #: src/LauncherSettingsDialog.cpp:173
 msgid "Really remove?"
-msgstr ""
+msgstr "¿Realmente desea quitar?"
 

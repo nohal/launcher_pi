@@ -63,7 +63,7 @@ protected:
 
     // Virtual event handlers, overide them in your derived class
     void OnBtnClick( wxCommandEvent& event );
-
+    void SendKbdEvents( const wxString cmd );
 
 public:
 

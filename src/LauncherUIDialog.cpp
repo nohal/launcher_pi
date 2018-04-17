@@ -25,6 +25,7 @@
  */
 
 #include "LauncherUIDialog.h"
+#include <map>
 ///////////////////////////////////////////////////////////////////////////
 
 LauncherUIDialog::LauncherUIDialog( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
@@ -77,19 +78,55 @@ LauncherUIDialog::~LauncherUIDialog()
 
 }
 
+long TranslateKey( const wxString key ) {
+    std::map<wxString, wxKeyCode> keys {
+        {"F1", WXK_F1}, {"F2", WXK_F2}, {"F3", WXK_F3}, {"F4", WXK_F4}, {"F5", WXK_F5}, {"F6", WXK_F6}, {"F7", WXK_F7}, {"F8", WXK_F8}, {"F9", WXK_F9}, {"F10", WXK_F10}, {"F11", WXK_F11}, {"F12", WXK_F12}
+    };
+    std::map<wxString, wxKeyCode>::iterator i = keys.find(key);
+    if( i != keys.end() ) {
+        return i->second;
+    }
+    return WXK_ESCAPE;
+}
+
+void LauncherUIDialog::SendKbdEvents( const wxString cmd ) {
+    wxKeyEvent e;
+    wxArrayString keys = wxSplit( cmd.AfterFirst(':'), ',', '\\' );
+    for ( size_t i = 0; i < keys.Count(); i++ )
+    {
+        wxString key = keys[i];
+        if( key.Length() > 1 && key[0] == '!' ) {
+            e.SetEventType(wxEVT_KEY_DOWN);
+            key = key.AfterFirst('!');
+        } else {
+            e.SetEventType(wxEVT_KEY_UP);
+        }
+        if( key.Length() == 1 ) {
+            e.m_keyCode = key[0];
+        } else {
+            e.m_keyCode = TranslateKey(key);
+        }
+        m_parent->ProcessWindowEvent(e);
+    }
+}
+
 void LauncherUIDialog::OnBtnClick( wxCommandEvent& event )
 {
     LauncherButton *button = ( LauncherButton* )event.GetEventObject();
     this->Hide();
     wxString cmd = button->GetCommand();
-    cmd.Replace( _T( "%BOAT_LAT%" ), wxString::Format( _T( "%f" ), m_Lat ) );
-    cmd.Replace( _T( "%BOAT_LON%" ), wxString::Format( _T( "%f" ), m_Lon ) );
-    cmd.Replace( _T( "%BOAT_SOG%" ), wxString::Format( _T( "%f" ), m_Sog ) );
-    cmd.Replace( _T( "%BOAT_COG%" ), wxString::Format( _T( "%f" ), m_Cog ) );
-    cmd.Replace( _T( "%BOAT_VAR%" ), wxString::Format( _T( "%f" ), m_Var ) );
-    cmd.Replace( _T( "%BOAT_FIXTIME%" ), wxString::Format( _T( "%d" ), m_FixTime ) );
-    cmd.Replace( _T( "%BOAT_NSATS%" ), wxString::Format( _T( "%d" ), m_nSats ) );
-    wxExecute( cmd, wxEXEC_ASYNC );
+    if( cmd.StartsWith(_T("KBD:")) ) {
+        SendKbdEvents(cmd);
+    } else {
+        cmd.Replace( _T( "%BOAT_LAT%" ), wxString::Format( _T( "%f" ), m_Lat ) );
+        cmd.Replace( _T( "%BOAT_LON%" ), wxString::Format( _T( "%f" ), m_Lon ) );
+        cmd.Replace( _T( "%BOAT_SOG%" ), wxString::Format( _T( "%f" ), m_Sog ) );
+        cmd.Replace( _T( "%BOAT_COG%" ), wxString::Format( _T( "%f" ), m_Cog ) );
+        cmd.Replace( _T( "%BOAT_VAR%" ), wxString::Format( _T( "%f" ), m_Var ) );
+        cmd.Replace( _T( "%BOAT_FIXTIME%" ), wxString::Format( _T( "%d" ), m_FixTime ) );
+        cmd.Replace( _T( "%BOAT_NSATS%" ), wxString::Format( _T( "%d" ), m_nSats ) );
+        wxExecute( cmd, wxEXEC_ASYNC );
+    }
     event.Skip();
 }
 

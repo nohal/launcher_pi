@@ -73,7 +73,7 @@ protected:
 
 public:
 
-    LauncherSettingsDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _( "Launcher Settings" ), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 400, 450 ), long style = wxDEFAULT_DIALOG_STYLE );
+    LauncherSettingsDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _( "Launcher Settings" ), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 400, 450 ), long style = wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER );
     ~LauncherSettingsDialog();
     void SetItems( const wxArrayString& labels, const wxArrayString& commands );
     wxArrayString GetLabels();
@@ -101,7 +101,7 @@ protected:
 
 public:
 
-    LauncherItemDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _( "Launcher Item" ), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 400, 250 ), long style = wxDEFAULT_DIALOG_STYLE );
+    LauncherItemDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _( "Launcher Item" ), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 400, 250 ), long style = wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER );
     ~LauncherItemDialog();
     void SetValues( const wxString& label, const wxString& command );
     wxString GetLabel();

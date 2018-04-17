@@ -41,7 +41,11 @@
 #include <wx/dialog.h>
 
 ///////////////////////////////////////////////////////////////////////////
-
+#ifdef __WXOSX__
+#define DLG_STYLE wxCAPTION | wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER | wxSTAY_ON_TOP
+#else
+#define DLG_STYLE wxCAPTION | wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER
+#endif
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class LauncherUIDialog
@@ -67,7 +71,7 @@ protected:
 
 public:
 
-    LauncherUIDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _( "Launcher" ), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 400, 450 ), long style = wxCAPTION | wxDEFAULT_DIALOG_STYLE );
+    LauncherUIDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _( "Launcher" ), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 400, 450 ), long style = DLG_STYLE );
     ~LauncherUIDialog();
     void CreateButtons( const wxArrayString& labels, const wxArrayString& commands );
     void AddButton( const wxString& label, const wxString& command );

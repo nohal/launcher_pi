@@ -35,6 +35,7 @@
 #include <wx/colour.h>
 #include <wx/settings.h>
 #include <wx/string.h>
+#include <wx/checkbox.h>
 #include <wx/sizer.h>
 #include <wx/button.h>
 #include <wx/dialog.h>
@@ -56,6 +57,7 @@ private:
 
 protected:
     wxListCtrl* m_listData;
+    wxCheckBox* m_cbCloseOnButton;
     wxButton* m_bAdd;
     wxButton* m_bEdit;
     wxButton* m_bRemove;
@@ -75,9 +77,10 @@ public:
 
     LauncherSettingsDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _( "Launcher Settings" ), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 400, 450 ), long style = wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER );
     ~LauncherSettingsDialog();
-    void SetItems( const wxArrayString& labels, const wxArrayString& commands );
+    void SetItems( const wxArrayString& labels, const wxArrayString& commands, const bool hide );
     wxArrayString GetLabels();
     wxArrayString GetCommands();
+    bool GetHideOnBtn() { return m_cbCloseOnButton->GetValue(); }
 };
 
 ///////////////////////////////////////////////////////////////////////////

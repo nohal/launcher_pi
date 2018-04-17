@@ -46,6 +46,9 @@ LauncherSettingsDialog::LauncherSettingsDialog ( wxWindow* parent, wxWindowID id
 
     m_listData = new wxListCtrl ( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLC_REPORT | wxLC_SINGLE_SEL );
     bSizerList->Add ( m_listData, 1, wxALL | wxEXPAND, 5 );
+    
+    m_cbCloseOnButton = new wxCheckBox( this, wxID_ANY, _("Close window on action"), wxDefaultPosition, wxDefaultSize, 0 );
+    bSizerList->Add( m_cbCloseOnButton, 0, wxALL, 5 );
 
     m_listData->InsertColumn ( 0, _ ( "Label" ), wxLIST_FORMAT_LEFT, 100 );
     m_listData->InsertColumn ( 1, _ ( "Command" ), wxLIST_FORMAT_LEFT, 200 );
@@ -186,8 +189,9 @@ void LauncherSettingsDialog::OnRemoveClick ( wxCommandEvent& event )
     }
 }
 
-void LauncherSettingsDialog::SetItems( const wxArrayString& labels, const wxArrayString& commands )
+void LauncherSettingsDialog::SetItems( const wxArrayString& labels, const wxArrayString& commands, const bool hide )
 {
+    m_cbCloseOnButton->SetValue(hide);
     m_listData->DeleteAllItems();
     for ( size_t i = 0; i < labels.Count(); i++ )
     {

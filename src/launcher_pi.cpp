@@ -152,6 +152,7 @@ extern "C" DECL_EXP void destroy_pi ( opencpn_plugin* p )
 launcher_pi::launcher_pi ( void *ppimgr )
     : opencpn_plugin_113 ( ppimgr )
 {
+    m_hide_on_btn = true;
     // Create the PlugIn icons
     initialize_images();
 }
@@ -188,7 +189,7 @@ int launcher_pi::Init ( void )
     m_pLauncherDialog = new LauncherUIDialog( m_parent_window );
     m_pLauncherDialog->CreateButtons( m_alauncher_labels, m_alauncher_commands );
     m_pLauncherSettingsDialog = new LauncherSettingsDialog( m_parent_window );
-    m_pLauncherSettingsDialog->SetItems( m_alauncher_labels, m_alauncher_commands );
+    m_pLauncherSettingsDialog->SetItems( m_alauncher_labels, m_alauncher_commands, m_hide_on_btn );
 
     return ( WANTS_CURSOR_LATLON       |
              WANTS_TOOLBAR_CALLBACK    |
@@ -270,10 +271,12 @@ void launcher_pi::ShowPreferencesDialog ( wxWindow* parent )
     {
         m_alauncher_labels = m_pLauncherSettingsDialog->GetLabels();
         m_alauncher_commands = m_pLauncherSettingsDialog->GetCommands();
+        m_hide_on_btn = m_pLauncherSettingsDialog->GetHideOnBtn();
         SaveConfig();
         m_pLauncherDialog->Hide();
         delete m_pLauncherDialog;
         m_pLauncherDialog = new LauncherUIDialog( m_parent_window );
+        m_pLauncherDialog->SetHideOnBtn(m_hide_on_btn);
         m_pLauncherDialog->CreateButtons( m_alauncher_labels, m_alauncher_commands );
     }
 }
@@ -300,7 +303,8 @@ bool launcher_pi::LoadConfig ( void )
 
     m_launcher_labels = pConf->Read ( _T ( "Labels" ), wxEmptyString );
     m_launcher_commands = pConf->Read ( _T ( "Commands" ), wxEmptyString );
-
+    m_hide_on_btn = pConf->Read ( _T ( "HideOnBtn" ), true );
+    
     if ( m_launcher_labels != wxEmptyString )
     {
         m_alauncher_labels = wxSplit( m_launcher_labels, ';', '\\' );
@@ -324,7 +328,8 @@ bool launcher_pi::SaveConfig ( void )
 
     pConf->Write ( _T ( "Labels" ),  m_launcher_labels );
     pConf->Write ( _T ( "Commands" ),  m_launcher_commands );
-
+    pConf->Write ( _T ( "HideOnBtn" ),  m_hide_on_btn );
+    
     return true;
 }
 

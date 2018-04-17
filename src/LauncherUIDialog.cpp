@@ -42,6 +42,7 @@ LauncherUIDialog::LauncherUIDialog( wxWindow* parent, wxWindowID id, const wxStr
 
     m_scrolledWindow->SetSizer( button_sizer );
     m_scrolledWindow->Layout();
+    m_hide_on_btn = false;
     button_sizer->Fit( m_scrolledWindow );
     main_sizer->Add( m_scrolledWindow, 1, wxALL | wxEXPAND, 5 );
 
@@ -113,7 +114,8 @@ void LauncherUIDialog::SendKbdEvents( const wxString cmd ) {
 void LauncherUIDialog::OnBtnClick( wxCommandEvent& event )
 {
     LauncherButton *button = ( LauncherButton* )event.GetEventObject();
-    this->Hide();
+    if(m_hide_on_btn)
+        this->Hide();
     wxString cmd = button->GetCommand();
     if( cmd.StartsWith(_T("KBD:")) ) {
         SendKbdEvents(cmd);

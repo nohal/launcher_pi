@@ -60,6 +60,7 @@ private:
     double m_Var;
     time_t m_FixTime;
     int    m_nSats;
+    bool   m_hide_on_btn;
       
 protected:
     wxScrolledWindow* m_scrolledWindow;
@@ -76,6 +77,7 @@ public:
     void CreateButtons( const wxArrayString& labels, const wxArrayString& commands );
     void AddButton( const wxString& label, const wxString& command );
     void SetPositionFix(double Lat, double Lon, double Cog, double Sog, double Var, time_t FixTime, int nSats);
+    void SetHideOnBtn(bool state) { m_hide_on_btn = state; }
 
 };
 

@@ -5,7 +5,7 @@
 
 ## Keyboard events
 
-- Start the command definition with string `KBD:` followed by coma separated list of key events to send to the main application. A component starting with `!` (explanation mark) represents a key down even, a component without the beginning `!` represents akey up event. Example: `KBD:!S,S` represents a short press of the `S` key, resulting in turning on/off the soundings.
+- Start the command definition with string `KBD:` followed by coma separated list of key events to send to the main application. A component starting with `!` (explanation mark) represents a key down even, a component without the beginning `!` represents a key up event. Example: `KBD:!S,S` represents a short press of the `S` key, resulting in turning on/off the soundings.
 
 ### Special keys
 

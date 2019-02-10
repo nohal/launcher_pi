@@ -43,7 +43,7 @@ before_deploy:
 deploy:
   - provider: releases
     api_key:
-      secure: VU95qFxSJuxVzddd23xL3XYUxYVRl50Kov1bhUc5Mq9ClZ+t4P1M45nuTPm8787UREkUXV5+pU+T6vLvcpBb8NkWs2gbU7hgNcTTYRjSY93+Ot+GHDOiYnKlf/td3KzE06jfoJoW8QX5cuNfYkNNdh+PW0eV1ixk60OjK9//MZw=
+      secure: kByBApQmut2gaQbXuvc6ql+YN3X5oZkR5PyMWHC5wqfl6RWNNxPU672OWG5f2weKon77teVscl8HAUs/AZK7pJKwBG6ailjljhIFVytLdl72jdaunlGgk+IXC14SF26UUoZJE4zBysBETsED05w3BwGyCxQWCdU3UUtQtdCRR6A=
     file: "${RELEASE_PKG_FILE}"
     skip_cleanup: true
     on:

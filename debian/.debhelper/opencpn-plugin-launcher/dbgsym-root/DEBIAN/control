@@ -1,0 +1,13 @@
+Package: opencpn-plugin-launcher-dbgsym
+Package-Type: ddeb
+Source: opencpn-plugin-launcher
+Version: 1.2-1
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Pavel Kalian <pavel@kalian.cz>
+Installed-Size: 632
+Depends: opencpn-plugin-launcher (= 1.2-1)
+Section: debug
+Priority: optional
+Description: debug symbols for opencpn-plugin-launcher
+Build-Ids: 75fba626a7fc83283b41d6e5db31a0b3ba5b8c02

@@ -1,6 +1,6 @@
 version: 1.2.{build}
 
-clone_folder: c:\project\launchr_pi
+clone_folder: c:\project\launcher_pi
 shallow_clone: true
 image:
 - Visual Studio 2017

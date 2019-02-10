@@ -1,34 +1,34 @@
 language: cpp
 os:
-- linux
-- osx
+  - linux
+  - osx
 before_install:
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
 install:
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install build-essential
-  cmake gettext git-core gpsd gpsd-clients libgps-dev wx-common libwxgtk3.0-dev libglu1-mesa-dev
-  libgtk2.0-dev wx3.0-headers libbz2-dev libtinyxml-dev libportaudio2 portaudio19-dev
-  libcurl4-openssl-dev libexpat1-dev libcairo2-dev libarchive-dev liblzma-dev libexif-dev;
-  fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install cairo libexif xz libarchive;
-  wget http://opencpn.navnux.org/build_deps/wx312_opencpn50_macos109.tar.xz; tar xJf
-  wx312_opencpn50_macos109.tar.xz -C /tmp; export PATH="/usr/local/opt/gettext/bin:$PATH";
-  echo 'export PATH="/usr/local/opt/gettext/bin:$PATH"' >> ~/.bash_profile; wget http://s.sudre.free.fr/Software/files/Packages.dmg;
-  hdiutil attach Packages.dmg; sudo installer -pkg "/Volumes/Packages 1.2.5/Install
-  Packages.pkg" -target "/"; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install build-essential
+    cmake gettext git-core gpsd gpsd-clients libgps-dev wx-common libwxgtk3.0-dev libglu1-mesa-dev
+    libgtk2.0-dev wx3.0-headers libbz2-dev libtinyxml-dev libportaudio2 portaudio19-dev
+    libcurl4-openssl-dev libexpat1-dev libcairo2-dev libarchive-dev liblzma-dev libexif-dev;
+    fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install cairo libexif xz libarchive;
+    wget http://opencpn.navnux.org/build_deps/wx312_opencpn50_macos109.tar.xz; tar xJf
+    wx312_opencpn50_macos109.tar.xz -C /tmp; export PATH="/usr/local/opt/gettext/bin:$PATH";
+    echo 'export PATH="/usr/local/opt/gettext/bin:$PATH"' >> ~/.bash_profile; wget http://s.sudre.free.fr/Software/files/Packages.dmg;
+    hdiutil attach Packages.dmg; sudo installer -pkg "/Volumes/Packages 1.2.5/Install Packages.pkg" -target "/";
+    fi
 script:
-- mkdir -p build
-- cd build
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cmake -DwxWidgets_CONFIG_EXECUTABLE=/tmp/wx312_opencpn50_macos109/bin/wx-config
-  -DwxWidgets_CONFIG_OPTIONS="--prefix=/tmp/wx312_opencpn50_macos109" -DCMAKE_INSTALL_PREFIX=/tmp/opencpn
-  -DCMAKE_OSX_DEPLOYMENT_TARGET=10.9 ..; fi
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cmake ..; fi
-- make
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make create-pkg; ls -la; pwd; fi
+  - mkdir -p build
+  - cd build
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cmake -DwxWidgets_CONFIG_EXECUTABLE=/tmp/wx312_opencpn50_macos109/bin/wx-config
+    -DwxWidgets_CONFIG_OPTIONS="--prefix=/tmp/wx312_opencpn50_macos109" -DCMAKE_INSTALL_PREFIX=/tmp/opencpn
+    -DCMAKE_OSX_DEPLOYMENT_TARGET=10.9 ..; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cmake ..; fi
+  - make
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make create-pkg; ls -la; pwd; fi
 env:
   global:
-  - secure: dXjA+mZQ3uxcLXLdtjRUMjbJ3otOboFL/jyckTPi9wjvPSOiQQ1OxVMGIoxUCRU9F1c/f6lk1cKtEfXBwEqHTxADRYY/FkyWPPQO4aRWSmZpU0wN19NBCKkVygeSTCYmM5bNrvgsKyG4x7OqvJBvAorU+T8XezHni69UcJQI0rw=
+    - secure: dXjA+mZQ3uxcLXLdtjRUMjbJ3otOboFL/jyckTPi9wjvPSOiQQ1OxVMGIoxUCRU9F1c/f6lk1cKtEfXBwEqHTxADRYY/FkyWPPQO4aRWSmZpU0wN19NBCKkVygeSTCYmM5bNrvgsKyG4x7OqvJBvAorU+T8XezHni69UcJQI0rw=
 addons:
   coverity_scan:
     project:
@@ -39,7 +39,7 @@ addons:
     build_command: make
     branch_pattern: coverity_scan
 before_deploy:
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export RELEASE_PKG_FILE=$(ls *.pkg); fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export RELEASE_PKG_FILE=$(ls *.pkg); fi
 deploy:
   - provider: releases
     api_key:
@@ -49,7 +49,7 @@ deploy:
     on:
       tags: true
       all_branches: true
-      os: osx
+      condition: "$TRAVIS_OS_NAME = osx"
       repo: nohal/launcher_pi
   - provider: launchpad
     slug: "~nohal/launcher-pi/+git/master"
@@ -61,5 +61,5 @@ deploy:
     on:
       tags: true
       all_branches: true
-      os: linux
+      condition: "$TRAVIS_OS_NAME = linux"
       repo: nohal/launcher_pi

@@ -30,7 +30,7 @@ script:
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make create-pkg; ls -la; pwd; fi
 env:
   global:
-  - secure: gzuRKPoISDCbjfRdI+KS0H3/9T4CDLybTxLwirUJ660IaFTewNYXj/pyOJOr7miOrBmQaJQw7aKAG4fpfbHpY0kkLQe2JHaJv84uyuev4QuJGtfyim3a2U4FbxtCyyjREyGI15enBra3N1xKtQqNbnkgOCKPtWSAlX4rf1elj5A=
+  - secure: dXjA+mZQ3uxcLXLdtjRUMjbJ3otOboFL/jyckTPi9wjvPSOiQQ1OxVMGIoxUCRU9F1c/f6lk1cKtEfXBwEqHTxADRYY/FkyWPPQO4aRWSmZpU0wN19NBCKkVygeSTCYmM5bNrvgsKyG4x7OqvJBvAorU+T8XezHni69UcJQI0rw=
 addons:
   coverity_scan:
     project:

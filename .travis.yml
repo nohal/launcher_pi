@@ -58,3 +58,9 @@ deploy:
       secure: XnkZHbxALvy4uQrL6/RmN+8/b1h8HwV6wi3h+iuPT815OQA7EIrHx06o112cNI2QuBiODVneyWCxr/OCGjwlkwNRyEIwc7Q5uBHYGJB6QqMJYEBEsMkTkZ/Pe+TaaE+S1TQJ5s1GgTTTuZxQYZfGU+SjLu7fTzsZ71nsuEpPxnU=
     oauth_token_secret:
       secure: sctt53xLZUg7aotrfOgUwQ11jzGXyQzOeFyi3az90JLF/3c2TBecauTPFwq1Qdtidbkw22Bm3Wk3Vv3PjL0BGfRdnhQZT8HiR7PPcflqaVSn3ws+LYgA0Yue5Z7NzTct0FKNItewtj+p4Vo5Sxmx6a4dp/5RHapAgmHW9gk/hk8=
+    skip_cleanup: true
+    on:
+      tags: true
+      all_branches: true
+      os: linux
+      repo: nohal/launcher_pi

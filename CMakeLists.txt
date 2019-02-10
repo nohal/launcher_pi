@@ -21,6 +21,10 @@ SET(NAME_SUFFIX "ov50")
 
 #SET(CMAKE_BUILD_TYPE Debug)
 
+SET(CMAKE_MACOSX_RPATH "ON")
+
+set (CMAKE_CXX_STANDARD 11)
+
 OPTION(LAUNCHER_USE_SVG "Use SVG graphics" ON)
 
 INCLUDE("cmake/PluginConfigure.cmake")

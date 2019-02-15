@@ -1,0 +1,8 @@
+####this configuration requires clang - format 3.8 or higher##
+Language : Cpp
+UseTab : Never
+TabWidth : 4
+IndentWidth : 4
+BasedOnStyle : Google
+PenaltyBreakString : 999999999
+ColumnLimit : 132

@@ -29,17 +29,17 @@
 
 #include "wx/wxprec.h"
 
-#ifndef  WX_PRECOMP
+#ifndef WX_PRECOMP
 #include "wx/wx.h"
-#endif //precompiled headers
+#endif  // precompiled headers
 
-#include <wx/arrstr.h> 
+#include <wx/arrstr.h>
 #include <wx/fileconf.h>
 
 #include "version.h"
 
-#define     MY_API_VERSION_MAJOR    1
-#define     MY_API_VERSION_MINOR    13
+#define MY_API_VERSION_MAJOR 1
+#define MY_API_VERSION_MINOR 13
 
 #include "ocpn_plugin.h"
 
@@ -50,17 +50,16 @@
 //    The PlugIn Class Definition
 //----------------------------------------------------------------------------------------------------------
 
-#define LAUNCHER_TOOL_POSITION    -1          // Request default positioning of toolbar tool
+#define LAUNCHER_TOOL_POSITION -1  // Request default positioning of toolbar tool
 
-class launcher_pi : public opencpn_plugin_113
-{
-public:
-    launcher_pi ( void *ppimgr );
-    ~launcher_pi ( void );
+class launcher_pi : public opencpn_plugin_113 {
+   public:
+    launcher_pi(void *ppimgr);
+    ~launcher_pi(void);
 
-//    The required PlugIn Methods
-    int Init ( void );
-    bool DeInit ( void );
+    //    The required PlugIn Methods
+    int Init(void);
+    bool DeInit(void);
 
     int GetAPIVersionMajor();
     int GetAPIVersionMinor();
@@ -71,19 +70,19 @@ public:
     wxString GetShortDescription();
     wxString GetLongDescription();
 
-//    The override PlugIn Methods
-    void SetCursorLatLon ( double lat, double lon );
-    int GetToolbarToolCount ( void );
-    void ShowPreferencesDialog ( wxWindow* parent );
-    void OnToolbarToolCallback ( int id );
+    //    The override PlugIn Methods
+    void SetCursorLatLon(double lat, double lon);
+    int GetToolbarToolCount(void);
+    void ShowPreferencesDialog(wxWindow *parent);
+    void OnToolbarToolCallback(int id);
     void SetPositionFix(PlugIn_Position_Fix &pfix);
 
-// Other public methods
-    void SetColorScheme ( PI_ColorScheme cs );
+    // Other public methods
+    void SetColorScheme(PI_ColorScheme cs);
 
-private:
-    bool LoadConfig ( void );
-    bool SaveConfig ( void );
+   private:
+    bool LoadConfig(void);
+    bool SaveConfig(void);
 
     wxFileConfig *m_pconfig;
     wxWindow *m_parent_window;
@@ -93,10 +92,9 @@ private:
 
     int m_display_width, m_display_height;
     int m_leftclick_tool_id;
-    
+
     wxString m_launcher_labels, m_launcher_commands;
     wxArrayString m_alauncher_labels, m_alauncher_commands;
     bool m_hide_on_btn;
-
 };
 #endif

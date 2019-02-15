@@ -28,17 +28,17 @@
 #define __LAUNCHERUIDIALOG_H__
 
 #include <wx/artprov.h>
-#include <wx/xrc/xmlres.h>
-#include <wx/intl.h>
-#include <wx/string.h>
 #include <wx/button.h>
-#include <wx/gdicmn.h>
-#include <wx/font.h>
 #include <wx/colour.h>
+#include <wx/dialog.h>
+#include <wx/font.h>
+#include <wx/gdicmn.h>
+#include <wx/intl.h>
+#include <wx/scrolwin.h>
 #include <wx/settings.h>
 #include <wx/sizer.h>
-#include <wx/scrolwin.h>
-#include <wx/dialog.h>
+#include <wx/string.h>
+#include <wx/xrc/xmlres.h>
 
 ///////////////////////////////////////////////////////////////////////////
 #ifdef __WXOSX__
@@ -50,61 +50,50 @@
 ///////////////////////////////////////////////////////////////////////////////
 /// Class LauncherUIDialog
 ///////////////////////////////////////////////////////////////////////////////
-class LauncherUIDialog : public wxDialog
-{
-private:
+class LauncherUIDialog : public wxDialog {
+   private:
     double m_Lat;
     double m_Lon;
     double m_Cog;
     double m_Sog;
     double m_Var;
     time_t m_FixTime;
-    int    m_nSats;
-    bool   m_hide_on_btn;
-      
-protected:
+    int m_nSats;
+    bool m_hide_on_btn;
+
+   protected:
     wxScrolledWindow* m_scrolledWindow;
     wxBoxSizer* button_sizer;
 
     // Virtual event handlers, overide them in your derived class
-    void OnBtnClick( wxCommandEvent& event );
-    void SendKbdEvents( const wxString cmd );
+    void OnBtnClick(wxCommandEvent& event);
+    void SendKbdEvents(const wxString cmd);
 
-public:
-
-    LauncherUIDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _( "Launcher" ), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 400, 450 ), long style = DLG_STYLE );
+   public:
+    LauncherUIDialog(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Launcher"),
+                     const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize(400, 450), long style = DLG_STYLE);
     ~LauncherUIDialog();
-    void CreateButtons( const wxArrayString& labels, const wxArrayString& commands );
-    void AddButton( const wxString& label, const wxString& command );
+    void CreateButtons(const wxArrayString& labels, const wxArrayString& commands);
+    void AddButton(const wxString& label, const wxString& command);
     void SetPositionFix(double Lat, double Lon, double Cog, double Sog, double Var, time_t FixTime, int nSats);
     void SetHideOnBtn(bool state) { m_hide_on_btn = state; }
-
 };
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class LauncherButton
 ///////////////////////////////////////////////////////////////////////////////
-class LauncherButton : public wxButton
-{
-private:
+class LauncherButton : public wxButton {
+   private:
     wxString m_command;
 
-protected:
-
-public:
-    LauncherButton( wxWindow *parent, wxWindowID id, const wxString &label = wxEmptyString, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize, long style = 0, const wxValidator &validator = wxDefaultValidator, const wxString &name = wxButtonNameStr ) :
-        wxButton( parent, id, label, pos, size, style, validator, name ) {}
-    void SetCommand( const wxString& command )
-    {
-        m_command = command;
-    }
-    wxString GetCommand()
-    {
-        return m_command;
-    }
-
+   protected:
+   public:
+    LauncherButton(wxWindow* parent, wxWindowID id, const wxString& label = wxEmptyString, const wxPoint& pos = wxDefaultPosition,
+                   const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator,
+                   const wxString& name = wxButtonNameStr)
+        : wxButton(parent, id, label, pos, size, style, validator, name) {}
+    void SetCommand(const wxString& command) { m_command = command; }
+    wxString GetCommand() { return m_command; }
 };
 
-
-#endif //__LAUNCHERUIDIALOG_H__
-
+#endif  //__LAUNCHERUIDIALOG_H__

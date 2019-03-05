@@ -55,11 +55,11 @@
 class launcher_pi : public opencpn_plugin_113 {
    public:
     launcher_pi(void *ppimgr);
-    ~launcher_pi(void);
+    ~launcher_pi();
 
     //    The required PlugIn Methods
-    int Init(void);
-    bool DeInit(void);
+    int Init();
+    bool DeInit();
 
     int GetAPIVersionMajor();
     int GetAPIVersionMinor();
@@ -72,7 +72,7 @@ class launcher_pi : public opencpn_plugin_113 {
 
     //    The override PlugIn Methods
     void SetCursorLatLon(double lat, double lon);
-    int GetToolbarToolCount(void);
+    int GetToolbarToolCount();
     void ShowPreferencesDialog(wxWindow *parent);
     void OnToolbarToolCallback(int id);
     void SetPositionFix(PlugIn_Position_Fix &pfix);
@@ -81,8 +81,8 @@ class launcher_pi : public opencpn_plugin_113 {
     void SetColorScheme(PI_ColorScheme cs);
 
    private:
-    bool LoadConfig(void);
-    bool SaveConfig(void);
+    bool LoadConfig();
+    bool SaveConfig();
 
     wxFileConfig *m_pconfig;
     wxWindow *m_parent_window;

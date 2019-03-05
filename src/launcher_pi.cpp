@@ -130,12 +130,12 @@ launcher_pi::launcher_pi(void *ppimgr) : opencpn_plugin_113(ppimgr) {
     initialize_images();
 }
 
-launcher_pi::~launcher_pi(void) {
+launcher_pi::~launcher_pi() {
     delete _img_launcher_pi;
     delete _img_launcher;
 }
 
-int launcher_pi::Init(void) {
+int launcher_pi::Init() {
     AddLocaleCatalog(_T ( "opencpn-launcher_pi" ));
 
     ::wxDisplaySize(&m_display_width, &m_display_height);
@@ -166,7 +166,7 @@ int launcher_pi::Init(void) {
             WANTS_PREFERENCES);
 }
 
-bool launcher_pi::DeInit(void) {
+bool launcher_pi::DeInit() {
     if (m_pLauncherDialog) {
         m_pLauncherDialog->Close();
         delete m_pLauncherDialog;
@@ -200,7 +200,7 @@ wxString launcher_pi::GetLongDescription() {
 Provides a simple configurable dialog to launch external programs.");
 }
 
-int launcher_pi::GetToolbarToolCount(void) { return 1; }
+int launcher_pi::GetToolbarToolCount() { return 1; }
 
 void launcher_pi::ShowPreferencesDialog(wxWindow *parent) {
     if (m_pLauncherSettingsDialog->ShowModal() == wxID_OK) {
@@ -225,7 +225,7 @@ void launcher_pi::SetCursorLatLon(double lat, double lon) {
     // TODO: We will perhaps implement some kind of variable substitution in a later version
 }
 
-bool launcher_pi::LoadConfig(void) {
+bool launcher_pi::LoadConfig() {
     wxFileConfig *pConf = (wxFileConfig *)m_pconfig;
 
     if (!pConf) return false;
@@ -244,7 +244,7 @@ bool launcher_pi::LoadConfig(void) {
     return true;
 }
 
-bool launcher_pi::SaveConfig(void) {
+bool launcher_pi::SaveConfig() {
     wxFileConfig *pConf = (wxFileConfig *)m_pconfig;
 
     if (!pConf) return false;

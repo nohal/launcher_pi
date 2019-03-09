@@ -26,12 +26,14 @@
 
 #include "LauncherUIDialog.h"
 #include <map>
+#include "launcher_pi.h"
 ///////////////////////////////////////////////////////////////////////////
 
-LauncherUIDialog::LauncherUIDialog(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size,
-                                   long style)
+LauncherUIDialog::LauncherUIDialog(launcher_pi* plugin, wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos,
+                                   const wxSize& size, long style)
     : wxDialog(parent, id, title, pos, size, style) {
     this->SetSizeHints(wxDefaultSize, wxDefaultSize);
+    m_plugin = plugin;
 
     wxBoxSizer* main_sizer;
     main_sizer = new wxBoxSizer(wxVERTICAL);
@@ -50,7 +52,7 @@ LauncherUIDialog::LauncherUIDialog(wxWindow* parent, wxWindowID id, const wxStri
     this->SetSizer(main_sizer);
     this->Layout();
 
-    this->Centre(wxBOTH);
+    // this->Centre(wxBOTH);
 }
 
 void LauncherUIDialog::CreateButtons(const wxArrayString& labels, const wxArrayString& commands) {
@@ -70,7 +72,10 @@ void LauncherUIDialog::AddButton(const wxString& label, const wxString& command)
     m_bAction->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(LauncherUIDialog::OnBtnClick), NULL, this);
 }
 
-LauncherUIDialog::~LauncherUIDialog() {}
+LauncherUIDialog::~LauncherUIDialog() {
+    GetSize(&m_plugin->m_window_width, &m_plugin->m_window_width);
+    GetPosition(&m_plugin->m_window_pos_x, &m_plugin->m_window_pos_y);
+}
 
 long TranslateKey(const wxString key) {
     std::map<wxString, wxKeyCode> keys{{"F1", WXK_F1}, {"F2", WXK_F2},   {"F3", WXK_F3},   {"F4", WXK_F4},

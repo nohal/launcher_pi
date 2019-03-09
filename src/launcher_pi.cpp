@@ -128,6 +128,10 @@ launcher_pi::launcher_pi(void *ppimgr) : opencpn_plugin_113(ppimgr) {
     m_hide_on_btn = true;
     // Create the PlugIn icons
     initialize_images();
+    m_window_width = 0;
+    m_window_height = 0;
+    m_window_pos_x = 0;
+    m_window_pos_y = 0;
 }
 
 launcher_pi::~launcher_pi() {
@@ -157,7 +161,18 @@ int launcher_pi::Init() {
                                            LAUNCHER_TOOL_POSITION, 0, this);
 #endif
 
-    m_pLauncherDialog = new LauncherUIDialog(m_parent_window);
+    wxPoint pos = wxDefaultPosition;
+    wxSize size(400, 450);
+    if (m_window_width != 0 || m_window_height != 0) {
+        size.SetWidth(wxMax(100, wxMin(m_window_width, ::wxGetDisplaySize().x)));
+        size.SetHeight(wxMax(100, wxMin(m_window_height, ::wxGetDisplaySize().y)));
+    }
+    if (m_window_pos_x != 0 || m_window_pos_y != 0) {
+        pos.x = wxMax(0, wxMin(m_window_pos_x, ::wxGetDisplaySize().x - m_window_width));
+        pos.y = wxMax(0, wxMin(m_window_pos_y, ::wxGetDisplaySize().y - m_window_height));
+    }
+
+    m_pLauncherDialog = new LauncherUIDialog(this, m_parent_window, wxID_ANY, _("Launcher"), pos, size);
     m_pLauncherDialog->CreateButtons(m_alauncher_labels, m_alauncher_commands);
     m_pLauncherSettingsDialog = new LauncherSettingsDialog(m_parent_window);
     m_pLauncherSettingsDialog->SetItems(m_alauncher_labels, m_alauncher_commands, m_hide_on_btn);
@@ -177,6 +192,7 @@ bool launcher_pi::DeInit() {
         delete m_pLauncherSettingsDialog;
         m_pLauncherSettingsDialog = NULL;
     }
+    SaveConfig();
     return true;
 }
 
@@ -208,9 +224,11 @@ void launcher_pi::ShowPreferencesDialog(wxWindow *parent) {
         m_alauncher_commands = m_pLauncherSettingsDialog->GetCommands();
         m_hide_on_btn = m_pLauncherSettingsDialog->GetHideOnBtn();
         SaveConfig();
+        wxPoint pos = m_pLauncherDialog->GetPosition();
+        wxSize size = m_pLauncherDialog->GetSize();
         m_pLauncherDialog->Hide();
         delete m_pLauncherDialog;
-        m_pLauncherDialog = new LauncherUIDialog(m_parent_window);
+        m_pLauncherDialog = new LauncherUIDialog(this, m_parent_window, wxID_ANY, _("Launcher"), pos, size);
         m_pLauncherDialog->SetHideOnBtn(m_hide_on_btn);
         m_pLauncherDialog->CreateButtons(m_alauncher_labels, m_alauncher_commands);
     }
@@ -235,6 +253,10 @@ bool launcher_pi::LoadConfig() {
     m_launcher_labels = pConf->Read(_T ( "Labels" ), wxEmptyString);
     m_launcher_commands = pConf->Read(_T ( "Commands" ), wxEmptyString);
     m_hide_on_btn = pConf->Read(_T ( "HideOnBtn" ), true);
+    m_window_width = pConf->Read(_T ( "Width" ), 0l);
+    m_window_height = pConf->Read(_T ( "Height" ), 0l);
+    m_window_pos_x = pConf->Read(_T ( "PosX" ), 0l);
+    m_window_pos_y = pConf->Read(_T ( "PosY" ), 0l);
 
     if (m_launcher_labels != wxEmptyString) {
         m_alauncher_labels = wxSplit(m_launcher_labels, ';', '\\');
@@ -257,6 +279,10 @@ bool launcher_pi::SaveConfig() {
     pConf->Write(_T ( "Labels" ), m_launcher_labels);
     pConf->Write(_T ( "Commands" ), m_launcher_commands);
     pConf->Write(_T ( "HideOnBtn" ), m_hide_on_btn);
+    pConf->Write(_T ( "Width" ), m_window_width);
+    pConf->Write(_T ( "Height" ), m_window_height);
+    pConf->Write(_T ( "PosX" ), m_window_pos_x);
+    pConf->Write(_T ( "PosY" ), m_window_pos_y);
 
     return true;
 }

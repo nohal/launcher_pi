@@ -53,6 +53,8 @@
 #define LAUNCHER_TOOL_POSITION -1  // Request default positioning of toolbar tool
 
 class launcher_pi : public opencpn_plugin_113 {
+    friend class LauncherUIDialog;
+
    public:
     launcher_pi(void *ppimgr);
     ~launcher_pi();
@@ -96,5 +98,11 @@ class launcher_pi : public opencpn_plugin_113 {
     wxString m_launcher_labels, m_launcher_commands;
     wxArrayString m_alauncher_labels, m_alauncher_commands;
     bool m_hide_on_btn;
+
+   protected:
+    int m_window_width;
+    int m_window_height;
+    int m_window_pos_x;
+    int m_window_pos_y;
 };
 #endif

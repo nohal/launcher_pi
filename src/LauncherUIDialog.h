@@ -47,6 +47,8 @@
 #define DLG_STYLE wxCAPTION | wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER
 #endif
 
+class launcher_pi;
+
 ///////////////////////////////////////////////////////////////////////////////
 /// Class LauncherUIDialog
 ///////////////////////////////////////////////////////////////////////////////
@@ -60,6 +62,7 @@ class LauncherUIDialog : public wxDialog {
     time_t m_FixTime;
     int m_nSats;
     bool m_hide_on_btn;
+    launcher_pi* m_plugin;
 
    protected:
     wxScrolledWindow* m_scrolledWindow;
@@ -70,7 +73,7 @@ class LauncherUIDialog : public wxDialog {
     void SendKbdEvents(const wxString cmd);
 
    public:
-    LauncherUIDialog(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Launcher"),
+    LauncherUIDialog(launcher_pi* plugin, wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Launcher"),
                      const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize(400, 450), long style = DLG_STYLE);
     ~LauncherUIDialog();
     void CreateButtons(const wxArrayString& labels, const wxArrayString& commands);

@@ -77,7 +77,7 @@ LauncherSettingsDialog::LauncherSettingsDialog(wxWindow* parent, wxWindowID id, 
     m_sdbSizer = new wxStdDialogButtonSizer();
     m_sdbSizerOK = new wxButton(this, wxID_OK);
     m_sdbSizer->AddButton(m_sdbSizerOK);
-    m_sdbSizerCancel = new wxButton(this, wxID_CANCEL);
+    m_sdbSizerCancel = new wxButton(this, wxID_CANCEL, _("Cancel"));
     m_sdbSizer->AddButton(m_sdbSizerCancel);
     m_sdbSizer->Realize();
 
@@ -244,7 +244,7 @@ LauncherItemDialog::LauncherItemDialog(wxWindow* parent, wxWindowID id, const wx
     m_sdbSizer = new wxStdDialogButtonSizer();
     m_sdbSizerOK = new wxButton(this, wxID_OK);
     m_sdbSizer->AddButton(m_sdbSizerOK);
-    m_sdbSizerCancel = new wxButton(this, wxID_CANCEL);
+    m_sdbSizerCancel = new wxButton(this, wxID_CANCEL, _("Cancel"));
     m_sdbSizer->AddButton(m_sdbSizerCancel);
     m_sdbSizer->Realize();
 

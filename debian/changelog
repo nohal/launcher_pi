@@ -1,3 +1,9 @@
+opencpn-plugin-launcher (1.3-1) unstable; urgency=medium
+
+  * Fix startup crash
+
+ -- Pavel Kalian <pavel@kalian.cz>  Thu, 30 May 2019 09:01:17 -0300
+
 opencpn-plugin-launcher (1.2-1) unstable; urgency=medium
 
   * Initial release for O5 using CI

@@ -44,10 +44,6 @@
 
 #include <wx/xml/xml.h>
 
-#ifdef ocpnUSE_SVG
-#include "wxSVG/svg.h"
-#endif  // ocpnUSE_SVG
-
 #include <memory>
 #include <vector>
 

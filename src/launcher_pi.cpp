@@ -258,9 +258,18 @@ bool launcher_pi::LoadConfig() {
     m_window_pos_x = pConf->Read(_T ( "PosX" ), 0l);
     m_window_pos_y = pConf->Read(_T ( "PosY" ), 0l);
 
-    if (m_launcher_labels != wxEmptyString) {
+    if (m_launcher_labels != wxEmptyString || m_launcher_commands != wxEmptyString) {
         m_alauncher_labels = wxSplit(m_launcher_labels, ';', '\\');
         m_alauncher_commands = wxSplit(m_launcher_commands, ';', '\\');
+    }
+
+    for (size_t i = 1; i <= wxMax(m_alauncher_labels.Count(), m_alauncher_commands.Count()); i++) {
+        if (m_alauncher_labels.Count() < i) {
+            m_alauncher_labels.Add(wxString::Format("Unknown %d", i));
+        }
+        if (m_alauncher_commands.Count() < i) {
+            m_alauncher_commands.Add(wxString::Format("unknown%d", i));
+        }
     }
 
     return true;

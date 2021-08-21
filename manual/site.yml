@@ -1,7 +1,7 @@
 site:
   title: Launcher Plugin Manual
   url:  https://nowhere.net
-  start_page: launcher:ROOT:launcher.adoc
+  start_page: launcher:ROOT:index.adoc
 
 content:
   sources:

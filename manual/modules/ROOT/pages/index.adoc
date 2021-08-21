@@ -16,14 +16,6 @@ This document is about Launcher plugin (Launcher)
 image::launcher_01.jpeg[]
 
 
-. link:launcher.html#what_and_why[What and Why]
-. link:launcher.html#installation[Installation]
-. link:launcher.html#standard_actions[Standard Actions]
-. link:launcher.html#keyboard_events[Keyboard Events]
-. link:launcher.html#examples[Examples]
-. link:launcher.html#frequently_asked_questions[Frequently Asked
-Questions]
-
 === What and Why
 
 *A. What does Launcher do*

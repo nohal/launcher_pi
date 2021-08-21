@@ -48,7 +48,6 @@ For instance the OpenCPN-website, the Cruisers Forum, Marine-Traffic
 
 In “*Standard actions*” we will show some examples. +
  +
-link:launcher.html#launcher[Back to top of page ↑]
 
 === Installation
 
@@ -123,7 +122,6 @@ should appear somewhere in your OpenCPN Toolbar.
 
 image::launcher_07.jpeg[]
  
-link:launcher.html#launcher[Back to top of page ↑]
 
 === Standard actions
 
@@ -249,7 +247,6 @@ given directory (C:\MyShip\Manuals\). +
 You can repeat this process of adding Launcher items. With every new
 assignment you will see the number of buttons growing. 
 
-link:launcher.html#launcher[Back to top of page ↑]
 
 === Internal OpenCPN Actions
 
@@ -291,7 +288,6 @@ UTC)
 |%BOAT_NSATS% |Number of satelites “visible” during the last fix
 |===
 
-link:launcher.html#launcher[Back to top of page ↑]
 
 ==== Keyboard Events
 
@@ -308,7 +304,6 @@ switching the color scheme. +
 Special keys implemented: F1-F12 +
 Example: KBD:!F7,F7 for a change of chart scale
 
-link:launcher.html#launcher[Back to top of page ↑]
 
 === Examples
 
@@ -326,7 +321,7 @@ as Nmea Server]
  +
 In this example we show how to make a Launcher item to launch a website
 (in this case the website of the Dutch Coastguard, which is
-http://www.kustwacht.nl[www.kustwacht.nl]) with Google Chrome. +
+https://www.kustwacht.nl[www.kustwacht.nl]) with Google Chrome. +
 
 To do so, you first have to find and copy the command to launch the
 program Google Chrome. +
@@ -349,12 +344,12 @@ Edit Launcher. +
 . Insert (paste) the *command* C:\Program Files
 (x86)\Google\Chrome\Application\chrome.exe
 . leave one space after “exe” and add the *adress of the website* (in
-this case: http://www.kustwacht.nl[www.kustwacht.nl]) +
+this case: https://www.kustwacht.nl[www.kustwacht.nl]) +
 
 The text in the field “command”should read: +
 
 *C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-http://www.kustwacht.nl[www.kustwacht.nl]* +
+https://www.kustwacht.nl[www.kustwacht.nl]* +
 
 Click “*OK*” to save the Launcher item. +
 
@@ -435,7 +430,6 @@ Click that button and the file will open.
 image::launcher_18.jpeg[]
 
 
-link:launcher.html#launcher[Back to top of page ↑] +
 
 === Frequently Asked Questions
 
@@ -463,4 +457,3 @@ Just don't forget to put that text between quotation marks (”). +
 *Note*: Windows 7 *+++Pro+++* 64-bit might not accept the ”-s” parameter
 from Launcher. Try ”/s“ instead. +
 
-link:launcher.html#launcher[Back to top of page ↑] +

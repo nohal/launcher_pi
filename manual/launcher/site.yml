@@ -1,0 +1,20 @@
+site:
+  title: Launcher Plugin Manual
+  url:  https://nowhere.net
+  start_page: launcher:ROOT:launcher.adoc
+
+content:
+  sources:
+    - url: ../..
+      start_path: manual/launcher
+      branches: HEAD
+      edit_url: https://github.com/opencpn-manuals/laucher/edit/master/{path}
+
+ui:   
+  bundle:
+    url: https://gitlab.com/leamas/antora-ui-default/-/raw/master/latest/ui-bundle.zip
+    snapshot: true
+
+output:
+  dir: ./docs
+  clean: true              

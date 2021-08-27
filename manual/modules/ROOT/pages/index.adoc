@@ -312,9 +312,7 @@ Here are some examples for use of the Launcher Plugin:
 ==== VDRplayer
 
 Launcher can be used to start various nmea VDR files to test plugins.
-See
-https://opencpn.org/wiki/dokuwiki/doku.php?id=opencpn:supplementary_software:nmea_instruments#nmea_server_for_tests[VDRplayer
-as Nmea Server]
+See xref:opencpn-plugins:misc:nmea-software.adoc[VDRplayer as Nmea Server]
 
 ==== Websites
 

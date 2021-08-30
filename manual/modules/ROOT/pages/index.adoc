@@ -16,14 +16,6 @@ This document is about Launcher plugin (Launcher)
 image::launcher_01.jpeg[]
 
 
-. link:launcher.html#what_and_why[What and Why]
-. link:launcher.html#installation[Installation]
-. link:launcher.html#standard_actions[Standard Actions]
-. link:launcher.html#keyboard_events[Keyboard Events]
-. link:launcher.html#examples[Examples]
-. link:launcher.html#frequently_asked_questions[Frequently Asked
-Questions]
-
 === What and Why
 
 *A. What does Launcher do*
@@ -56,7 +48,6 @@ For instance the OpenCPN-website, the Cruisers Forum, Marine-Traffic
 
 In “*Standard actions*” we will show some examples. +
  +
-link:launcher.html#launcher[Back to top of page ↑]
 
 === Installation
 
@@ -85,9 +76,9 @@ Scroll down to the “*Other*”-section and click “*Launcher*“ +
 Make sure you choose the file that is compatible with your
 computersystem. In this manual we presume it's Windows, so we choose the
 *Windows setup-package*. +
-*Download* the file (double-click). 
+*Download* the file (double-click).
 
-image::launcher_02.jpeg[] 
+image::launcher_02.jpeg[]
 
 *B. How to install Launcher* +
 
@@ -108,7 +99,7 @@ That's it. But before you can actually *use* Launcher, you first have to
 
 Open (or restart) OpenCPN.
 
-Click *Tools*-*Options*-. 
+Click *Tools*-*Options*-.
 
 image::launcher_04.jpeg[]
 
@@ -118,7 +109,7 @@ image::launcher_05.jpeg[]
 
 Scroll down untill you see the Launcher-pi. +
  +
-Click “*Enable*”. 
+Click “*Enable*”.
 
 image::launcher_06.jpeg[]
 
@@ -127,11 +118,10 @@ installed in the correct plugings directory of OpenCPN (eg: C:\Program
 Files (x86)\OpenCPN\plugins)
 
 Now the Launcher icon (it looks like an old fashioned ship's wheel)
-should appear somewhere in your OpenCPN Toolbar. 
+should appear somewhere in your OpenCPN Toolbar.
 
 image::launcher_07.jpeg[]
- 
-link:launcher.html#launcher[Back to top of page ↑]
+
 
 === Standard actions
 
@@ -157,7 +147,7 @@ You want a button in Launcher-pi to launch a program for you, so you
 will have to tell Launcher-pi: +
 1. What *label* you want on that *button* and +
 2. Where Launcher-pi can find the *command* to launch that specific
-*program*. 
+*program*.
 
 image::launcher_10.jpeg[]
 
@@ -202,14 +192,14 @@ This is how you do that: +
 
 Insert the *label* Manual of my ship +
 Insert the *command* C:\Program Files\Microsoft Office
-15\root\office15\WINWORD.EXE 
+15\root\office15\WINWORD.EXE
 
 image::launcher_11.jpeg[]
 
- 
+
 *+++IMPORTANT+++*: *Leave one space after “exe”* and add the *path and
 name of the file* you want to open. +
-In this case: *C:\MyShip\Manuals\Manual_of_my_ship.docx* 
+In this case: *C:\MyShip\Manuals\Manual_of_my_ship.docx*
 
 image::launcher_12.jpeg[]
 
@@ -217,16 +207,16 @@ The text in the field “command” should read *C:\Program Files\Microsoft
 Office 15\root\office15\WINWORD.EXE
 C:\MyShip\Manuals\Manual_of_my_ship.docx* +
 
-Click “*OK*” to save the Launcher item. 
+Click “*OK*” to save the Launcher item.
 
 image::launcher_13.jpeg[]
 
-Click “*OK*” to save the Launcher settings. 
+Click “*OK*” to save the Launcher settings.
 
 image::launcher_14.jpeg[]
 
 Click “*OK*” to exit the “options”-menu and return to the main screen of
-OpenCPN. 
+OpenCPN.
 
 image::launcher_15.jpeg[]
 
@@ -240,11 +230,11 @@ Click on the *Launcher icon* in the toolbar.
 
 image::launcher_07.jpeg[]
 
-Click the button with the label “*Manual of my ship*” 
+Click the button with the label “*Manual of my ship*”
 
 image::launcher_16.jpeg[]
 
-The WORD-document should open. 
+The WORD-document should open.
 
 image::launcher_17.jpeg[]
 
@@ -255,9 +245,8 @@ you actually do have a document called “Manual_of_my_ship.docx” in the
 given directory (C:\MyShip\Manuals\). +
 
 You can repeat this process of adding Launcher items. With every new
-assignment you will see the number of buttons growing. 
+assignment you will see the number of buttons growing.
 
-link:launcher.html#launcher[Back to top of page ↑]
 
 === Internal OpenCPN Actions
 
@@ -270,7 +259,7 @@ place of the command.
 Launcher 1.1 has some nice new functionality Readme in github main
 repository
 
-See https://github.com/nohal/launcher_pi#special-keys
+See xref:#_keyboard_events[Keyboard Events]
 
 ==== Variables
 
@@ -299,7 +288,6 @@ UTC)
 |%BOAT_NSATS% |Number of satelites “visible” during the last fix
 |===
 
-link:launcher.html#launcher[Back to top of page ↑]
 
 ==== Keyboard Events
 
@@ -316,7 +304,6 @@ switching the color scheme. +
 Special keys implemented: F1-F12 +
 Example: KBD:!F7,F7 for a change of chart scale
 
-link:launcher.html#launcher[Back to top of page ↑]
 
 === Examples
 
@@ -325,16 +312,14 @@ Here are some examples for use of the Launcher Plugin:
 ==== VDRplayer
 
 Launcher can be used to start various nmea VDR files to test plugins.
-See
-https://opencpn.org/wiki/dokuwiki/doku.php?id=opencpn:supplementary_software:nmea_instruments#nmea_server_for_tests[VDRplayer
-as Nmea Server]
+See xref:opencpn-plugins:misc:nmea-software.adoc[VDRplayer as Nmea Server]
 
 ==== Websites
 
  +
 In this example we show how to make a Launcher item to launch a website
 (in this case the website of the Dutch Coastguard, which is
-http://www.kustwacht.nl[www.kustwacht.nl]) with Google Chrome. +
+https://www.kustwacht.nl[www.kustwacht.nl]) with Google Chrome. +
 
 To do so, you first have to find and copy the command to launch the
 program Google Chrome. +
@@ -357,12 +342,12 @@ Edit Launcher. +
 . Insert (paste) the *command* C:\Program Files
 (x86)\Google\Chrome\Application\chrome.exe
 . leave one space after “exe” and add the *adress of the website* (in
-this case: http://www.kustwacht.nl[www.kustwacht.nl]) +
+this case: https://www.kustwacht.nl[www.kustwacht.nl]) +
 
 The text in the field “command”should read: +
 
 *C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-http://www.kustwacht.nl[www.kustwacht.nl]* +
+https://www.kustwacht.nl[www.kustwacht.nl]* +
 
 Click “*OK*” to save the Launcher item. +
 
@@ -438,12 +423,11 @@ Click on the *Launcher-pi icon* in the toolbar. +
 You should see the button that corresponds with the US Coast Pilot nr.
 2. +
 
-Click that button and the file will open. 
+Click that button and the file will open.
 
 image::launcher_18.jpeg[]
 
 
-link:launcher.html#launcher[Back to top of page ↑] +
 
 === Frequently Asked Questions
 
@@ -471,4 +455,3 @@ Just don't forget to put that text between quotation marks (”). +
 *Note*: Windows 7 *+++Pro+++* 64-bit might not accept the ”-s” parameter
 from Launcher. Try ”/s“ instead. +
 
-link:launcher.html#launcher[Back to top of page ↑] +

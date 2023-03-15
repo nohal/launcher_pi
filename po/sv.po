@@ -65,4 +65,3 @@ msgstr "Vill du verkligen ta bort denna genväg?"
 #: src/LauncherSettingsDialog.cpp:173
 msgid "Really remove?"
 msgstr "Ta bort?"
-

@@ -64,4 +64,3 @@ msgstr ""
 #: src/LauncherSettingsDialog.cpp:173
 msgid "Really remove?"
 msgstr ""
-

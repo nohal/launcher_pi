@@ -65,4 +65,3 @@ msgstr "Wilt u werkelijk deze Launcher-actie verwijderen?"
 #: src/LauncherSettingsDialog.cpp:173
 msgid "Really remove?"
 msgstr "Werkelijk verwijderen?"
-

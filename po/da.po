@@ -65,4 +65,3 @@ msgstr "Vil du fjerne denne launcher handling?"
 #: src/LauncherSettingsDialog.cpp:173
 msgid "Really remove?"
 msgstr "Virkelig fjerne?"
-

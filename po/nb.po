@@ -65,4 +65,3 @@ msgstr "Vil du virkelig fjerne denne App-Starter oppføringen?"
 #: src/LauncherSettingsDialog.cpp:173
 msgid "Really remove?"
 msgstr "Virkelig fjerne?"
-

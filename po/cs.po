@@ -65,4 +65,3 @@ msgstr "Opravdu chcete odstranit tuto akci ze Spouštěče?"
 #: src/LauncherSettingsDialog.cpp:173
 msgid "Really remove?"
 msgstr "Opravdu odstranit?"
-

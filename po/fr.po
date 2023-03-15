@@ -65,4 +65,3 @@ msgstr "Voulez vous vraiment supprimer cette action du chargeur ?"
 #: src/LauncherSettingsDialog.cpp:173
 msgid "Really remove?"
 msgstr "Supprimer vraiment ?"
-

@@ -65,4 +65,3 @@ msgstr "Kas soovite tõesti selle käivitajatoimingu eemaldada?"
 #: src/LauncherSettingsDialog.cpp:173
 msgid "Really remove?"
 msgstr "Kas tõesti eemaldada?"
-

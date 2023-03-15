@@ -65,4 +65,3 @@ msgstr "Haluatko todella poistaa tämän sovituksen toiminnon?"
 #: src/LauncherSettingsDialog.cpp:173
 msgid "Really remove?"
 msgstr "Todellako poistaa?"
-

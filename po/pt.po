@@ -65,4 +65,3 @@ msgstr "Pretende realmente remover este comando do Launcher?"
 #: src/LauncherSettingsDialog.cpp:173
 msgid "Really remove?"
 msgstr "Remover realmente?"
-

@@ -65,4 +65,3 @@ msgstr "¿Realmente desea eliminar esta acción de Lanzador?"
 #: src/LauncherSettingsDialog.cpp:173
 msgid "Really remove?"
 msgstr "¿Realmente desea quitar?"
-

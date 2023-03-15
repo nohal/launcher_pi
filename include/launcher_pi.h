@@ -83,7 +83,7 @@ public:
     void SetColorScheme(PI_ColorScheme cs);
     wxString GetDataDir()
     {
-        return GetPluginDataDir("launcher_pi") + wxFileName::GetPathSeparator()
+        return GetPluginDataDir("Launcher_pi") + wxFileName::GetPathSeparator()
             + "data" + wxFileName::GetPathSeparator();
     }
 

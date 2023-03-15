@@ -165,7 +165,6 @@ int launcher_pi::Init()
     wxString _svg_launcher = GetDataDir() + "launcher_pi.svg";
     wxString _svg_launcher_rollover = GetDataDir() + "launcher_pi_rollover.svg";
     wxString _svg_launcher_toggled = GetDataDir() + "launcher_pi_toggled.svg";
-
     m_leftclick_tool_id = InsertPlugInToolSVG(_T( "Launcher" ), _svg_launcher,
         _svg_launcher_rollover, _svg_launcher_toggled, wxITEM_CHECK,
         _("Launcher"), _T( "" ), nullptr, LAUNCHER_TOOL_POSITION, 0, this);

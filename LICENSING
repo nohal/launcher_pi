@@ -1,0 +1,9 @@
+Files developed in this project are copyright (c) Pavel Kalian and distributed using a GPLv3+ license; you can
+find the terms in the file COPYING.gplv3
+
+NSK also uses or relies on code from other sources with other licenses including:
+
+  - GPL (vs or later)  - see COPYING.gplv2
+  - BSD (3 clause)
+  - MIT/X11 (BSD like)
+  - BSL v1.0

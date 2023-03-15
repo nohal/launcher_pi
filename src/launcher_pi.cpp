@@ -28,7 +28,7 @@
 
 #ifndef WX_PRECOMP
 #include "wx/wx.h"
-#endif  // precompiled headers
+#endif // precompiled headers
 
 // ===========================================================================
 // wxJoin and wxSplit
@@ -38,9 +38,11 @@
 #else
 #include "wx/tokenzr.h"
 
-wxString wxJoin(const wxArrayString &arr, const wxChar sep, const wxChar escape) {
+wxString wxJoin(const wxArrayString& arr, const wxChar sep, const wxChar escape)
+{
     size_t max = arr.GetCount();
-    if (max == 0) return wxEmptyString;
+    if (max == 0)
+        return wxEmptyString;
 
     wxString str;
 
@@ -52,11 +54,13 @@ wxString wxJoin(const wxArrayString &arr, const wxChar sep, const wxChar escape)
     if (escape == wxT('\0')) {
         // escaping is disabled:
 
-        for (size_t i = 0; i < max; i++) str << arr.Item(i) << sep;
+        for (size_t i = 0; i < max; i++)
+            str << arr.Item(i) << sep;
     } else {
         for (size_t i = 0; i < max; i++) {
-            for (const wxChar *p = arr.Item(i); *p != wxT('\0'); p++) {
-                if (*p == sep) str << escape;  // escape this separator
+            for (const wxChar* p = arr.Item(i); *p != wxT('\0'); p++) {
+                if (*p == sep)
+                    str << escape; // escape this separator
                 str << *p;
             }
 
@@ -69,16 +73,19 @@ wxString wxJoin(const wxArrayString &arr, const wxChar sep, const wxChar escape)
     return str;
 }
 
-wxArrayString wxSplit(const wxString &str, const wxChar sep, const wxChar escape) {
+wxArrayString wxSplit(
+    const wxString& str, const wxChar sep, const wxChar escape)
+{
     if (escape == wxT('\0'))
         // we don't need to honour the escape character
-        return wxStringTokenize(str, sep, wxTOKEN_RET_EMPTY_ALL /* return all tokens, event empty ones */);
+        return wxStringTokenize(str, sep,
+            wxTOKEN_RET_EMPTY_ALL /* return all tokens, event empty ones */);
 
     wxArrayString ret;
     wxString curr;
     wxChar prev = wxT('\0');
 
-    for (const wxChar *p = str.c_str(); *p != wxT('\0'); p++) {
+    for (const wxChar* p = str.c_str(); *p != wxT('\0'); p++) {
         if (*p == sep) {
             if (prev == escape) {
                 // remove the escape character and don't consider this
@@ -106,9 +113,12 @@ wxArrayString wxSplit(const wxString &str, const wxChar sep, const wxChar escape
 
 // the class factories, used to create and destroy instances of the PlugIn
 
-extern "C" DECL_EXP opencpn_plugin *create_pi(void *ppimgr) { return new launcher_pi(ppimgr); }
+extern "C" DECL_EXP opencpn_plugin* create_pi(void* ppimgr)
+{
+    return new launcher_pi(ppimgr);
+}
 
-extern "C" DECL_EXP void destroy_pi(opencpn_plugin *p) { delete p; }
+extern "C" DECL_EXP void destroy_pi(opencpn_plugin* p) { delete p; }
 
 //---------------------------------------------------------------------------------------------------------
 //
@@ -116,30 +126,28 @@ extern "C" DECL_EXP void destroy_pi(opencpn_plugin *p) { delete p; }
 //
 //---------------------------------------------------------------------------------------------------------
 
-#include "icons.h"
-
 //---------------------------------------------------------------------------------------------------------
 //
 //          PlugIn initialization and de-init
 //
 //---------------------------------------------------------------------------------------------------------
 
-launcher_pi::launcher_pi(void *ppimgr) : opencpn_plugin_113(ppimgr) {
+launcher_pi::launcher_pi(void* ppimgr)
+    : opencpn_plugin_113(ppimgr)
+{
     m_hide_on_btn = true;
     // Create the PlugIn icons
-    initialize_images();
     m_window_width = 0;
     m_window_height = 0;
     m_window_pos_x = 0;
     m_window_pos_y = 0;
+    m_logo = GetBitmapFromSVGFile(GetDataDir() + "launcher_pi.svg", 32, 32);
 }
 
-launcher_pi::~launcher_pi() {
-    delete _img_launcher_pi;
-    delete _img_launcher;
-}
+launcher_pi::~launcher_pi() { }
 
-int launcher_pi::Init() {
+int launcher_pi::Init()
+{
     AddLocaleCatalog(_T ( "opencpn-launcher_pi" ));
 
     ::wxDisplaySize(&m_display_width, &m_display_height);
@@ -150,38 +158,46 @@ int launcher_pi::Init() {
     //    And load the configuration items
     LoadConfig();
 
-    // Get a pointer to the opencpn display canvas, to use as a parent for the LAUNCHER dialog
+    // Get a pointer to the opencpn display canvas, to use as a parent for the
+    // LAUNCHER dialog
     m_parent_window = GetOCPNCanvasWindow();
 
-#ifdef LAUNCHER_USE_SVG
-    m_leftclick_tool_id = InsertPlugInToolSVG(_T( "Launcher" ), _svg_launcher, _svg_launcher_rollover, _svg_launcher_toggled,
-                                              wxITEM_CHECK, _("Launcher"), _T( "" ), NULL, LAUNCHER_TOOL_POSITION, 0, this);
-#else
-    m_leftclick_tool_id = InsertPlugInTool(_T ( "" ), _img_launcher, _img_launcher, wxITEM_CHECK, _("Launcher"), _T ( "" ), NULL,
-                                           LAUNCHER_TOOL_POSITION, 0, this);
-#endif
+    wxString _svg_launcher = GetDataDir() + "launcher_pi.svg";
+    wxString _svg_launcher_rollover = GetDataDir() + "launcher_pi_rollover.svg";
+    wxString _svg_launcher_toggled = GetDataDir() + "launcher_pi_toggled.svg";
+
+    m_leftclick_tool_id = InsertPlugInToolSVG(_T( "Launcher" ), _svg_launcher,
+        _svg_launcher_rollover, _svg_launcher_toggled, wxITEM_CHECK,
+        _("Launcher"), _T( "" ), nullptr, LAUNCHER_TOOL_POSITION, 0, this);
 
     wxPoint pos = wxDefaultPosition;
     wxSize size(400, 450);
     if (m_window_width != 0 || m_window_height != 0) {
-        size.SetWidth(wxMax(100, wxMin(m_window_width, ::wxGetDisplaySize().x)));
-        size.SetHeight(wxMax(100, wxMin(m_window_height, ::wxGetDisplaySize().y)));
+        size.SetWidth(
+            wxMax(100, wxMin(m_window_width, ::wxGetDisplaySize().x)));
+        size.SetHeight(
+            wxMax(100, wxMin(m_window_height, ::wxGetDisplaySize().y)));
     }
     if (m_window_pos_x != 0 || m_window_pos_y != 0) {
-        pos.x = wxMax(0, wxMin(m_window_pos_x, ::wxGetDisplaySize().x - m_window_width));
-        pos.y = wxMax(0, wxMin(m_window_pos_y, ::wxGetDisplaySize().y - m_window_height));
+        pos.x = wxMax(
+            0, wxMin(m_window_pos_x, ::wxGetDisplaySize().x - m_window_width));
+        pos.y = wxMax(
+            0, wxMin(m_window_pos_y, ::wxGetDisplaySize().y - m_window_height));
     }
 
-    m_pLauncherDialog = new LauncherUIDialog(this, m_parent_window, wxID_ANY, _("Launcher"), pos, size);
+    m_pLauncherDialog = new LauncherUIDialog(
+        this, m_parent_window, wxID_ANY, _("Launcher"), pos, size);
     m_pLauncherDialog->CreateButtons(m_alauncher_labels, m_alauncher_commands);
     m_pLauncherSettingsDialog = new LauncherSettingsDialog(m_parent_window);
-    m_pLauncherSettingsDialog->SetItems(m_alauncher_labels, m_alauncher_commands, m_hide_on_btn);
+    m_pLauncherSettingsDialog->SetItems(
+        m_alauncher_labels, m_alauncher_commands, m_hide_on_btn);
 
-    return (WANTS_CURSOR_LATLON | WANTS_TOOLBAR_CALLBACK | INSTALLS_TOOLBAR_TOOL | WANTS_CONFIG | WANTS_NMEA_EVENTS |
-            WANTS_PREFERENCES);
+    return (WANTS_CURSOR_LATLON | WANTS_TOOLBAR_CALLBACK | INSTALLS_TOOLBAR_TOOL
+        | WANTS_CONFIG | WANTS_NMEA_EVENTS | WANTS_PREFERENCES);
 }
 
-bool launcher_pi::DeInit() {
+bool launcher_pi::DeInit()
+{
     if (m_pLauncherDialog) {
         m_pLauncherDialog->Close();
         delete m_pLauncherDialog;
@@ -204,21 +220,25 @@ int launcher_pi::GetPlugInVersionMajor() { return PLUGIN_VERSION_MAJOR; }
 
 int launcher_pi::GetPlugInVersionMinor() { return PLUGIN_VERSION_MINOR; }
 
-wxBitmap *launcher_pi::GetPlugInBitmap() { return _img_launcher_pi; }
+wxBitmap* launcher_pi::GetPlugInBitmap() { return &m_logo; }
 
 wxString launcher_pi::GetCommonName() { return _T ( "Launcher" ); }
 
-wxString launcher_pi::GetShortDescription() { return _("Launcher PlugIn for OpenCPN"); }
+wxString launcher_pi::GetShortDescription()
+{
+    return _("Launcher PlugIn for OpenCPN");
+}
 
-wxString launcher_pi::GetLongDescription() {
-    return _(
-        "Launcher PlugIn for OpenCPN\n\
+wxString launcher_pi::GetLongDescription()
+{
+    return _("Launcher PlugIn for OpenCPN\n\
 Provides a simple configurable dialog to launch external programs.");
 }
 
 int launcher_pi::GetToolbarToolCount() { return 1; }
 
-void launcher_pi::ShowPreferencesDialog(wxWindow *parent) {
+void launcher_pi::ShowPreferencesDialog(wxWindow* parent)
+{
     if (m_pLauncherSettingsDialog->ShowModal() == wxID_OK) {
         m_alauncher_labels = m_pLauncherSettingsDialog->GetLabels();
         m_alauncher_commands = m_pLauncherSettingsDialog->GetCommands();
@@ -228,25 +248,32 @@ void launcher_pi::ShowPreferencesDialog(wxWindow *parent) {
         wxSize size = m_pLauncherDialog->GetSize();
         m_pLauncherDialog->Hide();
         delete m_pLauncherDialog;
-        m_pLauncherDialog = new LauncherUIDialog(this, m_parent_window, wxID_ANY, _("Launcher"), pos, size);
+        m_pLauncherDialog = new LauncherUIDialog(
+            this, m_parent_window, wxID_ANY, _("Launcher"), pos, size);
         m_pLauncherDialog->SetHideOnBtn(m_hide_on_btn);
-        m_pLauncherDialog->CreateButtons(m_alauncher_labels, m_alauncher_commands);
+        m_pLauncherDialog->CreateButtons(
+            m_alauncher_labels, m_alauncher_commands);
     }
 }
 
-void launcher_pi::OnToolbarToolCallback(int id) {
+void launcher_pi::OnToolbarToolCallback(int id)
+{
     SetToolbarItemState(id, false);
     m_pLauncherDialog->Show();
 }
 
-void launcher_pi::SetCursorLatLon(double lat, double lon) {
-    // TODO: We will perhaps implement some kind of variable substitution in a later version
+void launcher_pi::SetCursorLatLon(double lat, double lon)
+{
+    // TODO: We will perhaps implement some kind of variable substitution in a
+    // later version
 }
 
-bool launcher_pi::LoadConfig() {
-    wxFileConfig *pConf = (wxFileConfig *)m_pconfig;
+bool launcher_pi::LoadConfig()
+{
+    wxFileConfig* pConf = (wxFileConfig*)m_pconfig;
 
-    if (!pConf) return false;
+    if (!pConf)
+        return false;
 
     pConf->SetPath(_T ( "/PlugIns/LAUNCHER" ));
 
@@ -258,12 +285,15 @@ bool launcher_pi::LoadConfig() {
     m_window_pos_x = pConf->Read(_T ( "PosX" ), 0l);
     m_window_pos_y = pConf->Read(_T ( "PosY" ), 0l);
 
-    if (m_launcher_labels != wxEmptyString || m_launcher_commands != wxEmptyString) {
+    if (m_launcher_labels != wxEmptyString
+        || m_launcher_commands != wxEmptyString) {
         m_alauncher_labels = wxSplit(m_launcher_labels, ';', '\\');
         m_alauncher_commands = wxSplit(m_launcher_commands, ';', '\\');
     }
 
-    for (size_t i = 1; i <= wxMax(m_alauncher_labels.Count(), m_alauncher_commands.Count()); i++) {
+    for (size_t i = 1;
+         i <= wxMax(m_alauncher_labels.Count(), m_alauncher_commands.Count());
+         i++) {
         if (m_alauncher_labels.Count() < i) {
             m_alauncher_labels.Add(wxString::Format("Unknown %d", i));
         }
@@ -275,10 +305,12 @@ bool launcher_pi::LoadConfig() {
     return true;
 }
 
-bool launcher_pi::SaveConfig() {
-    wxFileConfig *pConf = (wxFileConfig *)m_pconfig;
+bool launcher_pi::SaveConfig()
+{
+    wxFileConfig* pConf = (wxFileConfig*)m_pconfig;
 
-    if (!pConf) return false;
+    if (!pConf)
+        return false;
 
     pConf->SetPath(_T ( "/PlugIns/LAUNCHER" ));
 
@@ -296,8 +328,13 @@ bool launcher_pi::SaveConfig() {
     return true;
 }
 
-void launcher_pi::SetColorScheme(PI_ColorScheme cs) { DimeWindow(m_pLauncherDialog); }
+void launcher_pi::SetColorScheme(PI_ColorScheme cs)
+{
+    DimeWindow(m_pLauncherDialog);
+}
 
-void launcher_pi::SetPositionFix(PlugIn_Position_Fix &pfix) {
-    m_pLauncherDialog->SetPositionFix(pfix.Lat, pfix.Lon, pfix.Cog, pfix.Sog, pfix.Var, pfix.FixTime, pfix.nSats);
+void launcher_pi::SetPositionFix(PlugIn_Position_Fix& pfix)
+{
+    m_pLauncherDialog->SetPositionFix(pfix.Lat, pfix.Lon, pfix.Cog, pfix.Sog,
+        pfix.Var, pfix.FixTime, pfix.nSats);
 }

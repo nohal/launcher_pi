@@ -37,7 +37,7 @@ set(PKG_VERSION "1.3.0")
 set(PKG_PRERELEASE "beta")  # Empty, or a tag like 'beta'
 
 set(DISPLAY_NAME Launcher)    # Dialogs, installer artifacts, ...
-set(PLUGIN_API_NAME launcher_pi) # As of GetCommonName() in plugin API
+set(PLUGIN_API_NAME Launcher) # As of GetCommonName() in plugin API
 set(PKG_SUMMARY "Launcher plugin for OpenCPN")
 set(PKG_DESCRIPTION [=[
   Launcher plugin for OpenCPN

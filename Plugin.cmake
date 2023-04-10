@@ -34,7 +34,7 @@ set(OCPN_RELEASE_REPO
 #
 set(PKG_NAME Launcher_pi)
 set(PKG_VERSION "1.3.0")
-set(PKG_PRERELEASE "beta")  # Empty, or a tag like 'beta'
+set(PKG_PRERELEASE "")  # Empty, or a tag like 'beta'
 
 set(DISPLAY_NAME Launcher)    # Dialogs, installer artifacts, ...
 set(PLUGIN_API_NAME Launcher) # As of GetCommonName() in plugin API

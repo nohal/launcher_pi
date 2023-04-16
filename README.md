@@ -3,6 +3,9 @@
 - The plugin lets the user configure several commands which then can be launched from a simple dialog accessible from the main toolbar.
 - The plugin allows sending sequences of keystrokes to the main OpenCPN application. This allows to invoke virtually any OpenCPN function normally available using the keyboard on a system without it, eg. a tablet.
 
+[![Hosted By: Cloudsmith](https://img.shields.io/badge/OSS%20hosting%20by-cloudsmith-blue?logo=cloudsmith&style=flat-square)](https://cloudsmith.com)
+[![Coverity Scan Build Status](https://scan.coverity.com/projects/17810/badge.svg)](https://scan.coverity.com/projects/nohal-launcher_pi)
+
 ## Keyboard events
 
 - Start the command definition with string `KBD:` followed by coma separated list of key events to send to the main application. A component starting with `!` (explanation mark) represents a key down even, a component without the beginning `!` represents a key up event. Example: `KBD:!S,S` represents a short press of the `S` key, resulting in turning on/off the soundings.

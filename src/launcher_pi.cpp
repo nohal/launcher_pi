@@ -186,6 +186,7 @@ int launcher_pi::Init()
 
     m_pLauncherDialog = new LauncherUIDialog(
         this, m_parent_window, wxID_ANY, _("Launcher"), pos, size);
+    m_pLauncherDialog->SetHideOnBtn(m_hide_on_btn);
     m_pLauncherDialog->CreateButtons(m_alauncher_labels, m_alauncher_commands);
     m_pLauncherSettingsDialog = new LauncherSettingsDialog(m_parent_window);
     m_pLauncherSettingsDialog->SetItems(

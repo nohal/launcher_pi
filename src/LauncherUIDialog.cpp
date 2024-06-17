@@ -82,7 +82,7 @@ void LauncherUIDialog::AddButton(const wxString& label, const wxString& command)
 
 LauncherUIDialog::~LauncherUIDialog()
 {
-    GetSize(&m_plugin->m_window_width, &m_plugin->m_window_width);
+    GetSize(&m_plugin->m_window_width, &m_plugin->m_window_height);
     GetPosition(&m_plugin->m_window_pos_x, &m_plugin->m_window_pos_y);
 }
 

@@ -26,7 +26,7 @@ set(OCPN_RELEASE_REPO
 # -------  Plugin setup --------
 #
 set(PKG_NAME Launcher_pi)
-set(PKG_VERSION "1.3.5")
+set(PKG_VERSION "1.3.6")
 set(PKG_PRERELEASE "") # Empty, or a tag like 'beta'
 
 set(DISPLAY_NAME Launcher) # Dialogs, installer artifacts, ...

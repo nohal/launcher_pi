@@ -30,128 +30,122 @@
 ///////////////////////////////////////////////////////////////////////////
 
 LauncherUIDialog::LauncherUIDialog(launcher_pi* plugin, wxWindow* parent,
-    wxWindowID id, const wxString& title, const wxPoint& pos,
-    const wxSize& size, long style)
-    : wxDialog(parent, id, title, pos, size, style)
-{
-    this->SetSizeHints(wxDefaultSize, wxDefaultSize);
-    m_plugin = plugin;
+                                   wxWindowID id, const wxString& title,
+                                   const wxPoint& pos, const wxSize& size,
+                                   long style)
+    : wxDialog(parent, id, title, pos, size, style) {
+  this->SetSizeHints(wxDefaultSize, wxDefaultSize);
+  m_plugin = plugin;
 
-    wxBoxSizer* main_sizer;
-    main_sizer = new wxBoxSizer(wxVERTICAL);
+  wxBoxSizer* main_sizer;
+  main_sizer = new wxBoxSizer(wxVERTICAL);
 
-    m_scrolledWindow = new wxScrolledWindow(this, wxID_ANY, wxDefaultPosition,
-        wxDefaultSize, wxHSCROLL | wxVSCROLL);
-    m_scrolledWindow->SetScrollRate(5, 5);
+  m_scrolledWindow = new wxScrolledWindow(this, wxID_ANY, wxDefaultPosition,
+                                          wxDefaultSize, wxHSCROLL | wxVSCROLL);
+  m_scrolledWindow->SetScrollRate(5, 5);
 
-    button_sizer = new wxBoxSizer(wxVERTICAL);
+  button_sizer = new wxBoxSizer(wxVERTICAL);
 
-    m_scrolledWindow->SetSizer(button_sizer);
-    m_scrolledWindow->Layout();
-    m_hide_on_btn = false;
-    button_sizer->Fit(m_scrolledWindow);
-    main_sizer->Add(m_scrolledWindow, 1, wxALL | wxEXPAND, 5);
+  m_scrolledWindow->SetSizer(button_sizer);
+  m_scrolledWindow->Layout();
+  m_hide_on_btn = false;
+  button_sizer->Fit(m_scrolledWindow);
+  main_sizer->Add(m_scrolledWindow, 1, wxALL | wxEXPAND, 5);
 
-    this->SetSizer(main_sizer);
-    this->Layout();
+  this->SetSizer(main_sizer);
+  this->Layout();
 
-    // this->Centre(wxBOTH);
+  // this->Centre(wxBOTH);
 }
 
-void LauncherUIDialog::CreateButtons(
-    const wxArrayString& labels, const wxArrayString& commands)
-{
-    for (size_t i = 0; i < labels.Count(); i++) {
-        AddButton(labels[i], commands[i]);
-    }
-    this->m_scrolledWindow->Layout();
-    this->button_sizer->Fit(m_scrolledWindow);
-    this->Layout();
+void LauncherUIDialog::CreateButtons(const wxArrayString& labels,
+                                     const wxArrayString& commands) {
+  for (size_t i = 0; i < labels.Count(); i++) {
+    AddButton(labels[i], commands[i]);
+  }
+  this->m_scrolledWindow->Layout();
+  this->button_sizer->Fit(m_scrolledWindow);
+  this->Layout();
 }
 
-void LauncherUIDialog::AddButton(const wxString& label, const wxString& command)
-{
-    LauncherButton* m_bAction = new LauncherButton(
-        m_scrolledWindow, wxID_ANY, label, wxDefaultPosition, wxDefaultSize, 0);
-    m_bAction->SetCommand(command);
-    button_sizer->Add(m_bAction, 1, wxALL | wxEXPAND, 5);
+void LauncherUIDialog::AddButton(const wxString& label,
+                                 const wxString& command) {
+  LauncherButton* m_bAction = new LauncherButton(
+      m_scrolledWindow, wxID_ANY, label, wxDefaultPosition, wxDefaultSize, 0);
+  m_bAction->SetCommand(command);
+  button_sizer->Add(m_bAction, 1, wxALL | wxEXPAND, 5);
 
-    m_bAction->Connect(wxEVT_COMMAND_BUTTON_CLICKED,
-        wxCommandEventHandler(LauncherUIDialog::OnBtnClick), NULL, this);
+  m_bAction->Connect(wxEVT_COMMAND_BUTTON_CLICKED,
+                     wxCommandEventHandler(LauncherUIDialog::OnBtnClick), NULL,
+                     this);
 }
 
-LauncherUIDialog::~LauncherUIDialog()
-{
-    GetSize(&m_plugin->m_window_width, &m_plugin->m_window_height);
-    GetPosition(&m_plugin->m_window_pos_x, &m_plugin->m_window_pos_y);
+LauncherUIDialog::~LauncherUIDialog() {
+  GetSize(&m_plugin->m_window_width, &m_plugin->m_window_height);
+  GetPosition(&m_plugin->m_window_pos_x, &m_plugin->m_window_pos_y);
 }
 
-long TranslateKey(const wxString key)
-{
-    std::map<wxString, wxKeyCode> keys { { "F1", WXK_F1 }, { "F2", WXK_F2 },
-        { "F3", WXK_F3 }, { "F4", WXK_F4 }, { "F5", WXK_F5 }, { "F6", WXK_F6 },
-        { "F7", WXK_F7 }, { "F8", WXK_F8 }, { "F9", WXK_F9 },
-        { "F10", WXK_F10 }, { "F11", WXK_F11 }, { "F12", WXK_F12 } };
-    std::map<wxString, wxKeyCode>::iterator i = keys.find(key);
-    if (i != keys.end()) {
-        return i->second;
-    }
-    return WXK_ESCAPE;
+long TranslateKey(const wxString key) {
+  std::map<wxString, wxKeyCode> keys{
+      {"F1", WXK_F1}, {"F2", WXK_F2},   {"F3", WXK_F3},   {"F4", WXK_F4},
+      {"F5", WXK_F5}, {"F6", WXK_F6},   {"F7", WXK_F7},   {"F8", WXK_F8},
+      {"F9", WXK_F9}, {"F10", WXK_F10}, {"F11", WXK_F11}, {"F12", WXK_F12}};
+  std::map<wxString, wxKeyCode>::iterator i = keys.find(key);
+  if (i != keys.end()) {
+    return i->second;
+  }
+  return WXK_ESCAPE;
 }
 
-void LauncherUIDialog::SendKbdEvents(const wxString cmd)
-{
-    wxKeyEvent e;
-    wxArrayString keys = wxSplit(cmd.AfterFirst(':'), ',', '\\');
-    for (size_t i = 0; i < keys.Count(); i++) {
-        wxString key = keys[i];
-        if (key.Length() > 1 && key[0] == '!') {
-            e.SetEventType(wxEVT_KEY_DOWN);
-            key = key.AfterFirst('!');
-        } else {
-            e.SetEventType(wxEVT_KEY_UP);
-        }
-        if (key.Length() == 1) {
-            e.m_keyCode = key[0];
-        } else {
-            e.m_keyCode = TranslateKey(key);
-        }
-        m_parent->ProcessWindowEvent(e);
-    }
-}
-
-void LauncherUIDialog::OnBtnClick(wxCommandEvent& event)
-{
-    LauncherButton* button = (LauncherButton*)event.GetEventObject();
-    if (m_hide_on_btn)
-        this->Hide();
-    wxString cmd = button->GetCommand();
-    if (cmd.StartsWith(_T("KBD:"))) {
-        SendKbdEvents(cmd);
+void LauncherUIDialog::SendKbdEvents(const wxString cmd) {
+  wxKeyEvent e;
+  wxArrayString keys = wxSplit(cmd.AfterFirst(':'), ',', '\\');
+  for (size_t i = 0; i < keys.Count(); i++) {
+    wxString key = keys[i];
+    if (key.Length() > 1 && key[0] == '!') {
+      e.SetEventType(wxEVT_KEY_DOWN);
+      key = key.AfterFirst('!');
     } else {
-        cmd.Replace(_T( "%BOAT_LAT%" ), wxString::Format(_T( "%f" ), m_Lat));
-        cmd.Replace(_T( "%BOAT_LON%" ), wxString::Format(_T( "%f" ), m_Lon));
-        cmd.Replace(_T( "%BOAT_SOG%" ), wxString::Format(_T( "%f" ), m_Sog));
-        cmd.Replace(_T( "%BOAT_COG%" ), wxString::Format(_T( "%f" ), m_Cog));
-        cmd.Replace(_T( "%BOAT_VAR%" ), wxString::Format(_T( "%f" ), m_Var));
-        cmd.Replace(
-            _T( "%BOAT_FIXTIME%" ), wxString::Format(_T( "%d" ), m_FixTime));
-        cmd.Replace(
-            _T( "%BOAT_NSATS%" ), wxString::Format(_T( "%d" ), m_nSats));
-        wxExecute(cmd, wxEXEC_ASYNC);
+      e.SetEventType(wxEVT_KEY_UP);
     }
-    event.Skip();
+    if (key.Length() == 1) {
+      e.m_keyCode = key[0];
+    } else {
+      e.m_keyCode = TranslateKey(key);
+    }
+    m_parent->ProcessWindowEvent(e);
+  }
+}
+
+void LauncherUIDialog::OnBtnClick(wxCommandEvent& event) {
+  LauncherButton* button = (LauncherButton*)event.GetEventObject();
+  if (m_hide_on_btn) this->Hide();
+  wxString cmd = button->GetCommand();
+  if (cmd.StartsWith(_T("KBD:"))) {
+    SendKbdEvents(cmd);
+  } else {
+    cmd.Replace(_T( "%BOAT_LAT%" ), wxString::Format(_T( "%f" ), m_Lat));
+    cmd.Replace(_T( "%BOAT_LON%" ), wxString::Format(_T( "%f" ), m_Lon));
+    cmd.Replace(_T( "%BOAT_SOG%" ), wxString::Format(_T( "%f" ), m_Sog));
+    cmd.Replace(_T( "%BOAT_COG%" ), wxString::Format(_T( "%f" ), m_Cog));
+    cmd.Replace(_T( "%BOAT_VAR%" ), wxString::Format(_T( "%f" ), m_Var));
+    cmd.Replace(_T( "%BOAT_FIXTIME%" ),
+                wxString::Format(_T( "%d" ), m_FixTime));
+    cmd.Replace(_T( "%BOAT_NSATS%" ), wxString::Format(_T( "%d" ), m_nSats));
+    wxExecute(cmd, wxEXEC_ASYNC);
+  }
+  event.Skip();
 }
 
 void LauncherUIDialog::SetPositionFix(double Lat, double Lon, double Cog,
-    double Sog, double Var, time_t FixTime, int nSats)
-{
-    m_Lat = Lat;
-    m_Lon = Lon;
-    m_Cog = Cog;
-    m_Sog = Sog;
-    m_Var = Var;
-    ;
-    m_FixTime = FixTime;
-    m_nSats = nSats;
+                                      double Sog, double Var, time_t FixTime,
+                                      int nSats) {
+  m_Lat = Lat;
+  m_Lon = Lon;
+  m_Cog = Cog;
+  m_Sog = Sog;
+  m_Var = Var;
+  ;
+  m_FixTime = FixTime;
+  m_nSats = nSats;
 }

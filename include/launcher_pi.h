@@ -27,11 +27,12 @@
 #ifndef _LAUNCHERPI_H_
 #define _LAUNCHERPI_H_
 
+#include <cstdint>
 #include "wx/wxprec.h"
 
 #ifndef WX_PRECOMP
 #include "wx/wx.h"
-#endif // precompiled headers
+#endif  // precompiled headers
 
 #include <wx/arrstr.h>
 #include <wx/fileconf.h>
@@ -50,65 +51,65 @@
 //    The PlugIn Class Definition
 //----------------------------------------------------------------------------------------------------------
 
-#define LAUNCHER_TOOL_POSITION -1 // Request default positioning of toolbar tool
+#define LAUNCHER_TOOL_POSITION \
+  -1  // Request default positioning of toolbar tool
 
 class launcher_pi : public opencpn_plugin_113 {
-    friend class LauncherUIDialog;
+  friend class LauncherUIDialog;
 
 public:
-    launcher_pi(void* ppimgr);
-    ~launcher_pi();
+  launcher_pi(void* ppimgr);
+  ~launcher_pi();
 
-    //    The required PlugIn Methods
-    int Init();
-    bool DeInit();
+  //    The required PlugIn Methods
+  int Init();
+  bool DeInit();
 
-    int GetAPIVersionMajor();
-    int GetAPIVersionMinor();
-    int GetPlugInVersionMajor();
-    int GetPlugInVersionMinor();
-    wxBitmap* GetPlugInBitmap();
-    wxString GetCommonName();
-    wxString GetShortDescription();
-    wxString GetLongDescription();
+  int GetAPIVersionMajor();
+  int GetAPIVersionMinor();
+  int GetPlugInVersionMajor();
+  int GetPlugInVersionMinor();
+  wxBitmap* GetPlugInBitmap();
+  wxString GetCommonName();
+  wxString GetShortDescription();
+  wxString GetLongDescription();
 
-    //    The override PlugIn Methods
-    void SetCursorLatLon(double lat, double lon);
-    int GetToolbarToolCount();
-    void ShowPreferencesDialog(wxWindow* parent);
-    void OnToolbarToolCallback(int id);
-    void SetPositionFix(PlugIn_Position_Fix& pfix);
+  //    The override PlugIn Methods
+  void SetCursorLatLon(double lat, double lon);
+  int GetToolbarToolCount();
+  void ShowPreferencesDialog(wxWindow* parent);
+  void OnToolbarToolCallback(int id);
+  void SetPositionFix(PlugIn_Position_Fix& pfix);
 
-    // Other public methods
-    void SetColorScheme(PI_ColorScheme cs);
-    wxString GetDataDir()
-    {
-        return GetPluginDataDir("Launcher_pi") + wxFileName::GetPathSeparator()
-            + "data" + wxFileName::GetPathSeparator();
-    }
+  // Other public methods
+  void SetColorScheme(PI_ColorScheme cs);
+  wxString GetDataDir() {
+    return GetPluginDataDir("Launcher_pi") + wxFileName::GetPathSeparator() +
+           "data" + wxFileName::GetPathSeparator();
+  }
 
 private:
-    bool LoadConfig();
-    bool SaveConfig();
+  bool LoadConfig();
+  bool SaveConfig();
 
-    wxFileConfig* m_pconfig;
-    wxWindow* m_parent_window;
+  wxFileConfig* m_pconfig;
+  wxWindow* m_parent_window;
 
-    LauncherUIDialog* m_pLauncherDialog;
-    LauncherSettingsDialog* m_pLauncherSettingsDialog;
+  LauncherUIDialog* m_pLauncherDialog;
+  LauncherSettingsDialog* m_pLauncherSettingsDialog;
 
-    int m_display_width, m_display_height;
-    int m_leftclick_tool_id;
+  int m_display_width, m_display_height;
+  int m_leftclick_tool_id;
 
-    wxString m_launcher_labels, m_launcher_commands;
-    wxArrayString m_alauncher_labels, m_alauncher_commands;
-    bool m_hide_on_btn;
-    wxBitmap m_logo;
+  wxString m_launcher_labels, m_launcher_commands;
+  wxArrayString m_alauncher_labels, m_alauncher_commands;
+  bool m_hide_on_btn;
+  wxBitmap m_logo;
 
 protected:
-    int m_window_width;
-    int m_window_height;
-    int m_window_pos_x;
-    int m_window_pos_y;
+  int m_window_width;
+  int m_window_height;
+  int m_window_pos_x;
+  int m_window_pos_y;
 };
 #endif

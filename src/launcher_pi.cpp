@@ -268,7 +268,7 @@ bool launcher_pi::LoadConfig() {
   m_launcher_labels = pConf->Read(_T ( "Labels" ), wxEmptyString);
   m_launcher_commands = pConf->Read(_T ( "Commands" ), wxEmptyString);
   m_hide_on_btn = pConf->Read(_T ( "HideOnBtn" ), true);
-  m_expand_env = pConf->Read(_T ( "ExpandEnvVars" ), false);
+  pConf->Read(_T ( "ExpandEnvVars" ), &m_expand_env, false);
   m_window_width = pConf->Read(_T ( "Width" ), 0l);
   m_window_height = pConf->Read(_T ( "Height" ), 0l);
   m_window_pos_x = pConf->Read(_T ( "PosX" ), 0l);

@@ -56,6 +56,11 @@ LauncherSettingsDialog::LauncherSettingsDialog(wxWindow* parent, wxWindowID id,
                      wxDefaultPosition, wxDefaultSize, 0);
   bSizerList->Add(m_cbCloseOnButton, 0, wxALL, 5);
 
+  m_cbExpandEnv = new wxCheckBox(this, wxID_ANY,
+                                 _("Expand environment variables in commands"),
+                                 wxDefaultPosition, wxDefaultSize, 0);
+  bSizerList->Add(m_cbExpandEnv, 0, wxALL, 5);
+
   m_listData->InsertColumn(0, _("Label"), wxLIST_FORMAT_LEFT, 100);
   m_listData->InsertColumn(1, _("Command"), wxLIST_FORMAT_LEFT, 200);
 
@@ -206,8 +211,9 @@ void LauncherSettingsDialog::OnRemoveClick(wxCommandEvent& event) {
 
 void LauncherSettingsDialog::SetItems(const wxArrayString& labels,
                                       const wxArrayString& commands,
-                                      const bool hide) {
+                                      const bool hide, const bool expand_env) {
   m_cbCloseOnButton->SetValue(hide);
+  m_cbExpandEnv->SetValue(expand_env);
   m_listData->DeleteAllItems();
   for (size_t i = 0; i < labels.Count(); i++) {
     m_listData->InsertItem(i, labels[i]);

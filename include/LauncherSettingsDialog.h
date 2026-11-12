@@ -57,6 +57,7 @@ private:
 protected:
   wxListCtrl* m_listData;
   wxCheckBox* m_cbCloseOnButton;
+  wxCheckBox* m_cbExpandEnv;
   wxButton* m_bAdd;
   wxButton* m_bEdit;
   wxButton* m_bRemove;
@@ -79,10 +80,11 @@ public:
                          long style = wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER);
   ~LauncherSettingsDialog();
   void SetItems(const wxArrayString& labels, const wxArrayString& commands,
-                const bool hide);
+                const bool hide, const bool expand_env);
   wxArrayString GetLabels();
   wxArrayString GetCommands();
   bool GetHideOnBtn() { return m_cbCloseOnButton->GetValue(); }
+  bool GetExpandEnv() { return m_cbExpandEnv->GetValue(); }
 };
 
 ///////////////////////////////////////////////////////////////////////////

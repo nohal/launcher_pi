@@ -104,6 +104,7 @@ private:
   wxString m_launcher_labels, m_launcher_commands;
   wxArrayString m_alauncher_labels, m_alauncher_commands;
   bool m_hide_on_btn;
+  bool m_expand_env;
   wxBitmap m_logo;
 
 protected:

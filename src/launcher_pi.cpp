@@ -130,6 +130,7 @@ extern "C" DECL_EXP void destroy_pi(opencpn_plugin* p) { delete p; }
 
 launcher_pi::launcher_pi(void* ppimgr) : opencpn_plugin_113(ppimgr) {
   m_hide_on_btn = true;
+  m_expand_env = false;
   // Create the PlugIn icons
   m_window_width = 0;
   m_window_height = 0;
@@ -179,10 +180,11 @@ int launcher_pi::Init() {
   m_pLauncherDialog = new LauncherUIDialog(this, m_parent_window, wxID_ANY,
                                            _("Launcher"), pos, size);
   m_pLauncherDialog->SetHideOnBtn(m_hide_on_btn);
+  m_pLauncherDialog->SetExpandEnv(m_expand_env);
   m_pLauncherDialog->CreateButtons(m_alauncher_labels, m_alauncher_commands);
   m_pLauncherSettingsDialog = new LauncherSettingsDialog(m_parent_window);
   m_pLauncherSettingsDialog->SetItems(m_alauncher_labels, m_alauncher_commands,
-                                      m_hide_on_btn);
+                                      m_hide_on_btn, m_expand_env);
 
   return (WANTS_CURSOR_LATLON | WANTS_TOOLBAR_CALLBACK | INSTALLS_TOOLBAR_TOOL |
           WANTS_CONFIG | WANTS_NMEA_EVENTS | WANTS_PREFERENCES);
@@ -232,6 +234,7 @@ void launcher_pi::ShowPreferencesDialog(wxWindow* parent) {
     m_alauncher_labels = m_pLauncherSettingsDialog->GetLabels();
     m_alauncher_commands = m_pLauncherSettingsDialog->GetCommands();
     m_hide_on_btn = m_pLauncherSettingsDialog->GetHideOnBtn();
+    m_expand_env = m_pLauncherSettingsDialog->GetExpandEnv();
     SaveConfig();
     wxPoint pos = m_pLauncherDialog->GetPosition();
     wxSize size = m_pLauncherDialog->GetSize();
@@ -240,6 +243,7 @@ void launcher_pi::ShowPreferencesDialog(wxWindow* parent) {
     m_pLauncherDialog = new LauncherUIDialog(this, m_parent_window, wxID_ANY,
                                              _("Launcher"), pos, size);
     m_pLauncherDialog->SetHideOnBtn(m_hide_on_btn);
+    m_pLauncherDialog->SetExpandEnv(m_expand_env);
     m_pLauncherDialog->CreateButtons(m_alauncher_labels, m_alauncher_commands);
   }
 }
@@ -264,6 +268,7 @@ bool launcher_pi::LoadConfig() {
   m_launcher_labels = pConf->Read(_T ( "Labels" ), wxEmptyString);
   m_launcher_commands = pConf->Read(_T ( "Commands" ), wxEmptyString);
   m_hide_on_btn = pConf->Read(_T ( "HideOnBtn" ), true);
+  m_expand_env = pConf->Read(_T ( "ExpandEnvVars" ), false);
   m_window_width = pConf->Read(_T ( "Width" ), 0l);
   m_window_height = pConf->Read(_T ( "Height" ), 0l);
   m_window_pos_x = pConf->Read(_T ( "PosX" ), 0l);
@@ -302,6 +307,7 @@ bool launcher_pi::SaveConfig() {
   pConf->Write(_T ( "Labels" ), m_launcher_labels);
   pConf->Write(_T ( "Commands" ), m_launcher_commands);
   pConf->Write(_T ( "HideOnBtn" ), m_hide_on_btn);
+  pConf->Write(_T ( "ExpandEnvVars" ), m_expand_env);
   pConf->Write(_T ( "Width" ), m_window_width);
   pConf->Write(_T ( "Height" ), m_window_height);
   pConf->Write(_T ( "PosX" ), m_window_pos_x);

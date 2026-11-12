@@ -49,6 +49,7 @@ LauncherUIDialog::LauncherUIDialog(launcher_pi* plugin, wxWindow* parent,
   m_scrolledWindow->SetSizer(button_sizer);
   m_scrolledWindow->Layout();
   m_hide_on_btn = false;
+  m_expand_env = false;
   button_sizer->Fit(m_scrolledWindow);
   main_sizer->Add(m_scrolledWindow, 1, wxALL | wxEXPAND, 5);
 
@@ -132,6 +133,7 @@ void LauncherUIDialog::OnBtnClick(wxCommandEvent& event) {
     cmd.Replace(_T( "%BOAT_FIXTIME%" ),
                 wxString::Format(_T( "%d" ), m_FixTime));
     cmd.Replace(_T( "%BOAT_NSATS%" ), wxString::Format(_T( "%d" ), m_nSats));
+    if (m_expand_env) cmd = wxExpandEnvVars(cmd);
     wxExecute(cmd, wxEXEC_ASYNC);
   }
   event.Skip();

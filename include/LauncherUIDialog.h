@@ -63,6 +63,7 @@ private:
   time_t m_FixTime;
   int m_nSats;
   bool m_hide_on_btn;
+  bool m_expand_env;
   launcher_pi* m_plugin;
 
 protected:
@@ -87,6 +88,7 @@ public:
   void SetPositionFix(double Lat, double Lon, double Cog, double Sog,
                       double Var, time_t FixTime, int nSats);
   void SetHideOnBtn(bool state) { m_hide_on_btn = state; }
+  void SetExpandEnv(bool state) { m_expand_env = state; }
 };
 
 ///////////////////////////////////////////////////////////////////////////////
